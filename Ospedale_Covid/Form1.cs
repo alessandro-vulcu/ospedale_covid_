@@ -20,7 +20,7 @@ namespace Ospedale_Covid
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

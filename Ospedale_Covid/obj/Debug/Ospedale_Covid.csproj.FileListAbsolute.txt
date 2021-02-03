@@ -1,0 +1,13 @@
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\bin\Debug\Ospedale_Covid.exe.config
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\bin\Debug\Ospedale_Covid.exe
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\bin\Debug\Ospedale_Covid.pdb
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\bin\Debug\System.Data.SQLite.dll
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\bin\Debug\System.Data.SQLite.xml
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.csprojAssemblyReference.cache
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Form1.resources
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Properties.Resources.resources
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.SplashScreen.resources
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.csproj.GenerateResource.cache
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.csproj.CopyComplete
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.exe
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.pdb
