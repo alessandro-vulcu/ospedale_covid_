@@ -16,9 +16,7 @@ namespace Ospedale_Covid
         public SplashScreen()
         {
             InitializeComponent();
-            //axWindowsMediaPlayer1.Hide();
-            axWindowsMediaPlayer1.uiMode = "None";
-            axWindowsMediaPlayer1.URL = @"Coviddi_Logo.mp4";
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)

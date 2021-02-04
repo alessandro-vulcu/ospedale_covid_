@@ -63,6 +63,16 @@ namespace Ospedale_Covid.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _Dimensioni_originali__Coviddi_Logo {
+            get {
+                object obj = ResourceManager.GetObject("[Dimensioni originali] Coviddi Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Coviddi_Logo {
             get {
                 object obj = ResourceManager.GetObject("Coviddi Logo", resourceCulture);
@@ -96,6 +106,16 @@ namespace Ospedale_Covid.Properties {
         internal static System.Drawing.Bitmap coviddi700400 {
             get {
                 object obj = ResourceManager.GetObject("coviddi700400", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cv_db {
+            get {
+                object obj = ResourceManager.GetObject("cv_db", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
