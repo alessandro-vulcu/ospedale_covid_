@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Ospedale_Covid
 {
     public partial class SplashScreen : Form
@@ -15,6 +16,9 @@ namespace Ospedale_Covid
         public SplashScreen()
         {
             InitializeComponent();
+            //axWindowsMediaPlayer1.Hide();
+            axWindowsMediaPlayer1.uiMode = "None";
+            axWindowsMediaPlayer1.URL = @"Coviddi_Logo.mp4";
         }
 
         private void timer1_Tick(object sender, EventArgs e)
