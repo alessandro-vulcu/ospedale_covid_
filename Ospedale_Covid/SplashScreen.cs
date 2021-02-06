@@ -16,14 +16,16 @@ namespace Ospedale_Covid
         public SplashScreen()
         {
             InitializeComponent();
-
+            this.Opacity = 0;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             panel1.Width += 3;
-            if(panel1.Width >= 700)
+            this.Opacity += 0.025;
+            if (panel1.Width >= 700)
             {
+                
                 timer1.Stop();
                 Form1 f = new Form1();
                 this.Hide();
@@ -31,6 +33,11 @@ namespace Ospedale_Covid
                 this.Close();
             }
             
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
