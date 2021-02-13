@@ -123,28 +123,30 @@ namespace Ospedale_Covid
             childForm.BringToFront();
             childForm.Show();
         }
+        //apre personale
         private void btnPersonale_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7);
+            OpenChildForm(new Personale());
         }
-
+        //apre dashboard
         private void iconButton3_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7);
             OpenChildForm(new Dashboard());
         }
-
+        //apre pazienti
         private void btnPazienti_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7);
             OpenChildForm(new Pazienti());
         }
-
+        //apre vaccini
         private void iconButton1_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7);
         }
-
+        //apre strutture
         private void iconButton2_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7);

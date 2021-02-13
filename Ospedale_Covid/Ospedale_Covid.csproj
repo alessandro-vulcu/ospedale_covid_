@@ -88,6 +88,12 @@
     <Compile Include="Pazienti.Designer.cs">
       <DependentUpon>Pazienti.cs</DependentUpon>
     </Compile>
+    <Compile Include="Personale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personale.Designer.cs">
+      <DependentUpon>Personale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SplashScreen.cs">
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pazienti.resx">
       <DependentUpon>Pazienti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personale.resx">
+      <DependentUpon>Personale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

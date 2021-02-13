@@ -19,3 +19,4 @@ C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Deb
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\bin\Debug\FontAwesome.Sharp.dll
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Dashboard.resources
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Pazienti.resources
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Personale.resources
