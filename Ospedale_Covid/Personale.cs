@@ -99,5 +99,10 @@ namespace Ospedale_Covid
             DataSource("Personale", dataGridView1);
             caricaInComboBox();
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

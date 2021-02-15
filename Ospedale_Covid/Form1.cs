@@ -25,6 +25,7 @@ namespace Ospedale_Covid
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 65);
             panel1.Controls.Add(leftBorderBtn);
+            this.MinimumSize = new Size(1350, 813);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -128,28 +129,43 @@ namespace Ospedale_Covid
         {
             ActivateButton(sender, RGBColors.color7);
             OpenChildForm(new Personale());
+            iconPictureBox1.IconChar = btnPersonale.IconChar;
+            label1.Text = btnPersonale.Text;
         }
         //apre dashboard
         private void iconButton3_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7);
             OpenChildForm(new Dashboard());
+            iconPictureBox1.IconChar = iconButton3.IconChar;
+            label1.Text = iconButton3.Text;
         }
         //apre pazienti
         private void btnPazienti_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7);
             OpenChildForm(new Pazienti());
+            iconPictureBox1.IconChar = btnPazienti.IconChar;
+            label1.Text = btnPazienti.Text;
         }
         //apre vaccini
         private void iconButton1_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7);
+            iconPictureBox1.IconChar = iconButton1.IconChar;
+            label1.Text = iconButton1.Text;
         }
         //apre strutture
         private void iconButton2_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7);
+            iconPictureBox1.IconChar = iconButton2.IconChar;
+            label1.Text = iconButton2.Text;
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
