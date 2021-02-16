@@ -20,6 +20,7 @@ C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\bin\Deb
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Dashboard.resources
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Pazienti.resources
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Personale.resources
-C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.OrariStudio.resources
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Vaccini.resources
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Strutture.resources
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.csproj.CoreCompileInputs.cache
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.InormazioniMedico.resources

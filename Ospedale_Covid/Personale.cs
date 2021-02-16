@@ -183,7 +183,6 @@ namespace Ospedale_Covid
             {
                 this.dataGridView1.Rows[e.RowIndex].Selected = true;
                 this.rowIndex = e.RowIndex;
-                dataGridView1.SelectedRows[this.rowIndex].Cells[0].Value.ToString();
                 this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[1];
                 this.contextMenuStrip1.Show(this.dataGridView1, e.Location);
                 contextMenuStrip1.Show(Cursor.Position);
@@ -197,7 +196,7 @@ namespace Ospedale_Covid
 
         private void espandiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OrariStudio newOrario = new OrariStudio(dataGridView1.SelectedRows[this.rowIndex].Cells[0].Value.ToString(), dataGridView1.SelectedRows[this.rowIndex].Cells[1].Value.ToString(), dataGridView1.SelectedRows[this.rowIndex].Cells[2].Value.ToString());
+            InormazioniMedico newOrario = new InormazioniMedico(dataGridView1.Rows[this.rowIndex].Cells[0].Value.ToString(), dataGridView1.Rows[this.rowIndex].Cells[1].Value.ToString(), dataGridView1.Rows[this.rowIndex].Cells[2].Value.ToString());
             newOrario.ShowDialog();
         }
     }
