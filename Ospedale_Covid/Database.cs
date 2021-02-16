@@ -37,6 +37,23 @@ namespace Ospedale_Covid
                 connessione.Close();
             }
         }
+        public void DataSourceWhere(string nometabella, string id, string nomeid, DataGridView tabComuni)
+        {
+            using (SQLiteConnection connessione = new SQLiteConnection(@"Data Source=ospedale_covidDB.db"))
+            {
+                connessione.Open();
+                using (SQLiteCommand comando = new SQLiteCommand(String.Format("SELECT * FROM {0} WHERE {1} = '{2}'", nometabella, nomeid, id), connessione))
+                {
+                    SQLiteDataAdapter da = new SQLiteDataAdapter(comando);
+                    DataSet ds = new DataSet("tabelle");
+
+                    da.Fill(ds, "tabella");
+                    tabComuni.DataSource = ds.Tables["tabella"];
+                    tabComuni.Refresh();
+                }
+                connessione.Close();
+            }
+        }
         public void aggiungi(string comandosql, DataGridView dataGridView1)
         {
             dataGridView1.Columns.Clear();
@@ -130,5 +147,32 @@ namespace Ospedale_Covid
             string id = builder.ToString().ToUpper();
             return id;
         }
+        public List<string> daColonnaALista(string nometabella, string colonna)
+        {
+            List<string> IDs = new List<string>();
+            string stringaConnessione = @"Data Source=ospedale_covidDB.db;";
+            using (SQLiteConnection connessione = new SQLiteConnection(stringaConnessione))
+            {
+                connessione.Open();
+
+                using (var transaction = connessione.BeginTransaction())
+                {
+                    using (SQLiteCommand comando = new SQLiteCommand(connessione))
+                    {
+                        comando.CommandText = string.Format("SELECT {0} FROM {1}", colonna, nometabella);
+
+                        SQLiteDataReader reader = comando.ExecuteReader();
+                        
+                        while (reader.Read())
+                        {
+                            IDs.Add(reader.GetString(0));
+                        }
+                    }
+                    transaction.Commit();
+                }
+                connessione.Close();
+            }
+            return IDs;
+        } 
     }
 }

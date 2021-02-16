@@ -83,6 +83,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrariStudio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrariStudio.Designer.cs">
+      <DependentUpon>OrariStudio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pazienti.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,11 +109,26 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Strutture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Strutture.Designer.cs">
+      <DependentUpon>Strutture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vaccini.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vaccini.Designer.cs">
+      <DependentUpon>Vaccini.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrariStudio.resx">
+      <DependentUpon>OrariStudio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pazienti.resx">
       <DependentUpon>Pazienti.cs</DependentUpon>
@@ -127,6 +148,12 @@
     </Compile>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strutture.resx">
+      <DependentUpon>Strutture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vaccini.resx">
+      <DependentUpon>Vaccini.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

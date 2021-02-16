@@ -232,5 +232,10 @@ namespace Ospedale_Covid
         {
 
         }
+
+        private void espandiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

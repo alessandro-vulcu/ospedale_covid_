@@ -17,6 +17,7 @@ namespace Ospedale_Covid
     {
         Database db;
         string currentPK;
+        int rowIndex = 0;
         public Personale()
         {
             InitializeComponent();
@@ -169,6 +170,35 @@ namespace Ospedale_Covid
             txtSpec.Text = Convert.ToString(db.getData(string.Format(@"SELECT specializzazione FROM personale WHERE idPersonale = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
             comboTipo.Text = Convert.ToString(db.getData(string.Format(@"SELECT tipo FROM personale WHERE idPersonale = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
             
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                this.dataGridView1.Rows[e.RowIndex].Selected = true;
+                this.rowIndex = e.RowIndex;
+                dataGridView1.SelectedRows[this.rowIndex].Cells[0].Value.ToString();
+                this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[1];
+                this.contextMenuStrip1.Show(this.dataGridView1, e.Location);
+                contextMenuStrip1.Show(Cursor.Position);
+            }
+        }
+
+        private void eliminaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void espandiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OrariStudio newOrario = new OrariStudio(dataGridView1.SelectedRows[this.rowIndex].Cells[0].Value.ToString(), dataGridView1.SelectedRows[this.rowIndex].Cells[1].Value.ToString(), dataGridView1.SelectedRows[this.rowIndex].Cells[2].Value.ToString());
+            newOrario.ShowDialog();
         }
     }
 }

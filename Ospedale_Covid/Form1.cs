@@ -159,6 +159,7 @@ namespace Ospedale_Covid
         private void iconButton2_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7);
+            OpenChildForm(new Strutture());
             iconPictureBox1.IconChar = iconButton2.IconChar;
             label1.Text = iconButton2.Text;
         }
