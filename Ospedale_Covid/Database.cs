@@ -89,7 +89,7 @@ namespace Ospedale_Covid
         }
         public void dropRow(string nometabella, string ID, string nomeID)
         {
-            string stringaConnessione = @"Data Source=ospedale_covidDB.db";
+            string stringaConnessione = @"Data Source=ospedale_covidDB.db;";
             using (SQLiteConnection connessione = new SQLiteConnection(stringaConnessione))
             {
                 connessione.Open();
@@ -106,6 +106,29 @@ namespace Ospedale_Covid
                 }
                 connessione.Close();
             }
+        }
+        public void caricaInComboBox(DataGridView dataGridView1, ComboBox comboBox1)
+        {
+            List<string> columnHead = new List<string>();
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                columnHead.Add(dataGridView1.Columns[i].HeaderText);
+            }
+            comboBox1.DataSource = columnHead;
+        }
+        public string generateID()
+        {
+            StringBuilder builder = new StringBuilder();
+            Enumerable
+               .Range(65, 26)
+                .Select(e => ((char)e).ToString())
+                .Concat(Enumerable.Range(97, 26).Select(e => ((char)e).ToString()))
+                .Concat(Enumerable.Range(0, 10).Select(e => e.ToString()))
+                .OrderBy(e => Guid.NewGuid())
+                .Take(11)
+                .ToList().ForEach(e => builder.Append(e));
+            string id = builder.ToString().ToUpper();
+            return id;
         }
     }
 }

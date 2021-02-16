@@ -9,24 +9,29 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using FontAwesome.Sharp;
+using System.Globalization;
 
 namespace Ospedale_Covid
 {
     public partial class Personale : Form
     {
+        Database db;
+        string currentPK;
         public Personale()
         {
             InitializeComponent();
+            db = new Database();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox(panel1))
             {
-                string comando1 = string.Format("INSERT INTO pazienti(nome, cognome, luogoNascita, dataNascita, codiceFiscale, telefono, email) VALUES(\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\", \"{6}\")", txtNome.Text, txtCognome.Text, txtNascita.Text, txtData.Text, txtCF.Text, txtTelefono.Text, txtEmail.Text);
+                string comando1 = string.Format("INSERT INTO personale(idPersonale, nome, cognome, luogoNascita, dataNascita, codiceFiscale, telefono, mail, specializzazione, tipo) VALUES(\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\", \"{6}\", \"{7}\", \"{8}\", \"{9}\")", db.generateID(), txtNome.Text, txtCognome.Text, txtNascita.Text, txtData.Text, txtCF.Text, txtTelefono.Text, txtEmail.Text, txtSpec.Text, comboTipo.Text);
                 esegui(comando1);
             }
-            DataSource("pazienti", dataGridView1);
+            DataSource("personale", dataGridView1);
         }
         private void esegui(string comandosql)
         {
@@ -97,12 +102,73 @@ namespace Ospedale_Covid
         private void Personale_Load(object sender, EventArgs e)
         {
             DataSource("Personale", dataGridView1);
+            db.caricaInComboBox(dataGridView1, comboBox1);
             caricaInComboBox();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text.Trim() != "")
+            {
+                string comandosql = string.Format(@"SELECT * FROM {0} WHERE {1} LIKE '{2}' COLLATE NOCASE", "personale", comboBox1.Text, txtSpec.Text);
+                db.aggiungi(comandosql, dataGridView1);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!CheckTextBox(panel1))
+            {
+                try
+                {
+                    string comando1 = string.Format("UPDATE personale SET nome = \"{0}\", cognome = \"{1}\", luogoNascita = \"{2}\", datanascita = \"{3}\", codiceFiscale = \"{4}\", telefono = \"{5}\", mail = \"{6}\", specializzazione = \"{7}\", tipo = \"{8}\" WHERE idPersonale = \"{9}\"", txtNome.Text, txtCognome.Text, txtNascita.Text, txtData.Text, txtCF.Text, txtTelefono.Text, txtEmail.Text, txtSpec.Text, comboTipo.Text, currentPK);
+                    db.esegui(comando1);
+                    foreach (Control txt in panel1.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
+                    {
+                        if (txt is TextBox)
+                        {
+                            txt.Text = "";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            db.DataSource("personale", dataGridView1);
+            button2.Enabled = false;
+            button1.Enabled = true;
+            txtCF.Enabled = true;
+            currentPK = "";
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            button2.Enabled = true;
+            button1.Enabled = false;
+            currentPK = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+
+            txtNome.Text = Convert.ToString(db.getData(string.Format(@"SELECT nome FROM personale WHERE idPersonale = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtCognome.Text = Convert.ToString(db.getData(string.Format(@"SELECT cognome FROM personale WHERE idPersonale = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtNascita.Text = Convert.ToString(db.getData(string.Format(@"SELECT luogoNascita FROM personale WHERE idPersonale = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtData.Value = DateTime.ParseExact(db.getData(string.Format(@"SELECT dataNascita FROM personale WHERE idPersonale = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            txtCF.Text = Convert.ToString(db.getData(string.Format(@"SELECT codiceFiscale FROM personale WHERE idPersonale = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtTelefono.Text = Convert.ToString(db.getData(string.Format(@"SELECT telefono FROM personale WHERE idPersonale = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtEmail.Text = Convert.ToString(db.getData(string.Format(@"SELECT mail FROM personale WHERE idPersonale = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtSpec.Text = Convert.ToString(db.getData(string.Format(@"SELECT specializzazione FROM personale WHERE idPersonale = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            comboTipo.Text = Convert.ToString(db.getData(string.Format(@"SELECT tipo FROM personale WHERE idPersonale = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            
         }
     }
 }
