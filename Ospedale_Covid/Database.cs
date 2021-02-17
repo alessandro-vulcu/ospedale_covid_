@@ -104,6 +104,7 @@ namespace Ospedale_Covid
                 connessione.Close();
             }
         }
+        
         public void dropRow(string nometabella, string ID, string nomeID)
         {
             string stringaConnessione = @"Data Source=ospedale_covidDB.db;";
