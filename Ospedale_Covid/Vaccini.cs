@@ -12,15 +12,18 @@ namespace Ospedale_Covid
 {
     public partial class Vaccini : Form
     {
+        Database db;
+        int rowIndex;
         public Vaccini()
         {
             InitializeComponent();
-            
+            db = new Database();
         }
 
         private void Vaccini_Load(object sender, EventArgs e)
         {
-
+            db.DataSource("vacciniCovid", dataGridView1);
+            db.DataSource("vaccinazioni", dataGridView2);
         }
     }
 }

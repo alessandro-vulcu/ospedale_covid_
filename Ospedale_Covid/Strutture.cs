@@ -90,5 +90,28 @@ namespace Ospedale_Covid
             }
             db.DataSource("strutture", dataGridView1);
         }
+
+        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
+            {
+                this.dataGridView1.Rows[e.RowIndex].Selected = true;
+                this.rowIndex = e.RowIndex;
+                this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[1];
+                this.contextMenuStrip1.Show(this.dataGridView1, e.Location);
+                contextMenuStrip1.Show(Cursor.Position);
+            }
+        }
+
+        private void eliminaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void espandiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InformazioniStruttura informazioniStruttura = new InformazioniStruttura(dataGridView1.Rows[this.rowIndex].Cells[0].Value.ToString());
+            informazioniStruttura.ShowDialog();
+        }
     }
 }

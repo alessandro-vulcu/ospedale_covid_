@@ -83,6 +83,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Informazioni pazienti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Informazioni pazienti.Designer.cs">
+      <DependentUpon>Informazioni pazienti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InformazioniStruttura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformazioniStruttura.Designer.cs">
+      <DependentUpon>InformazioniStruttura.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrariStudio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +138,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informazioni pazienti.resx">
+      <DependentUpon>Informazioni pazienti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformazioniStruttura.resx">
+      <DependentUpon>InformazioniStruttura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrariStudio.resx">
       <DependentUpon>OrariStudio.cs</DependentUpon>
@@ -220,6 +238,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Media\Images\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />

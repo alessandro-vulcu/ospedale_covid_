@@ -109,25 +109,6 @@ namespace Ospedale_Covid
         }
 
 
-        private void iconButton3_Click(object sender, EventArgs e)
-        {
-            if(iconButton3.Text == "Pazienti")
-            {
-                db.DataSource("pazienti", dataGridView1);
-                iconButton3.Text = "Residenza";
-                qualeDatabase = "pazienti";
-                db.caricaInComboBox(dataGridView1, comboBox1);
-            }
-            else
-            {
-                db.DataSource("residenza", dataGridView1);
-                iconButton3.Text = "Pazienti";
-                qualeDatabase = "residenza";
-                db.caricaInComboBox(dataGridView1, comboBox1);
-            }
-            
-        }
-
         private void iconButton1_Click(object sender, EventArgs e)
         {
             if(textBox1.Text.Trim() != "")
@@ -200,7 +181,7 @@ namespace Ospedale_Covid
 
         private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
             {
                 this.dataGridView1.Rows[e.RowIndex].Selected = true;
                 this.rowIndex = e.RowIndex;
@@ -214,16 +195,8 @@ namespace Ospedale_Covid
         {
             if (!this.dataGridView1.Rows[this.rowIndex].IsNewRow)
             {
-                if (dataGridView1.Columns[4].HeaderText == "codiceFiscale")
-                {
-                    db.dropRow("pazienti", dataGridView1.Rows[this.rowIndex].Cells[4].Value.ToString(), "codiceFiscale");
-                    db.DataSource("pazienti", dataGridView1);
-                }
-                else
-                {
-                    db.dropRow("residenza", dataGridView1.Rows[this.rowIndex].Cells[1].Value.ToString(), "idPaziente");
-                    db.DataSource("residenza", dataGridView1);
-                } 
+                db.dropRow("pazienti", dataGridView1.Rows[this.rowIndex].Cells[4].Value.ToString(), "codiceFiscale");
+                db.DataSource("pazienti", dataGridView1);
             }
 
         }
@@ -235,7 +208,8 @@ namespace Ospedale_Covid
 
         private void espandiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            Informazioni_pazienti informazioni_Pazienti = new Informazioni_pazienti(dataGridView1.Rows[this.rowIndex].Cells[4].Value.ToString());
+            informazioni_Pazienti.ShowDialog();
         }
     }
 }

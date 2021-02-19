@@ -179,7 +179,7 @@ namespace Ospedale_Covid
 
         private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
             {
                 this.dataGridView1.Rows[e.RowIndex].Selected = true;
                 this.rowIndex = e.RowIndex;
@@ -198,6 +198,12 @@ namespace Ospedale_Covid
         {
             InormazioniMedico newOrario = new InormazioniMedico(dataGridView1.Rows[this.rowIndex].Cells[0].Value.ToString(), dataGridView1.Rows[this.rowIndex].Cells[1].Value.ToString(), dataGridView1.Rows[this.rowIndex].Cells[2].Value.ToString());
             newOrario.ShowDialog();
+        }
+
+        private void mostraOperatoriCovidToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string comando = string.Format(@"SELECT personale.idPersonale, personale.nome, personale.cognome FROM personale INNER JOIN operatoreCovid ON personale.idPersonale=operatoreCovid.idPersonale");
+            db.DataSourceComando(comando, dataGridView1);
         }
     }
 }

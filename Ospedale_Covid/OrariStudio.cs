@@ -30,6 +30,23 @@ namespace Ospedale_Covid
             db.DataSourceWhere("orariPersonale", idPersonale, "idPersonale", dataGridView1);
             db.DataSourceWhere("mediciPaziente", idPersonale, "idPersonale", dataGridView2);
             writeInLabel();
+            bloccaMediciBase(selectTipo());
+        }
+        public bool selectTipo()
+        {
+            string comando = string.Format("SELECT tipo FROM personale WHERE idPersonale = '{0}'", idPersonale);
+            if (db.getData(comando) == "Medico")
+                return true;
+            else
+                return false;
+        }
+        public void bloccaMediciBase(bool tipo)
+        {
+            if (!tipo)
+            {
+                comboBox3.Enabled = false;
+                iconButton2.Enabled = false;
+            }
         }
         public void writeInLabel()
         {
@@ -37,11 +54,11 @@ namespace Ospedale_Covid
             
             if(db.getData(comando) != "")
             {
-                label7.Text = db.getData(string.Format("SELECT idStruttura FROM personaleStrutture WHERE idPersonale = '{0}'", idPersonale));
+                textBox1.Text = string.Format("Il medico corrente è assegnato alla struttura \n" + db.getData(string.Format("SELECT idStruttura FROM personaleStrutture WHERE idPersonale = '{0}'", idPersonale)));
             }
             else
             {
-                label7.Text = "Nessuna";
+                textBox1.Text = "Nessuna struttura assegnata";
             }
         } 
 

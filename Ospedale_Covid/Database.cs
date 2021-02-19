@@ -22,7 +22,7 @@ namespace Ospedale_Covid
         
         public void DataSource(string nometabella, DataGridView tabComuni)
         {
-            using (SQLiteConnection connessione = new SQLiteConnection(@"Data Source=ospedale_covidDB.db"))
+            using (SQLiteConnection connessione = new SQLiteConnection(@"Data Source=ospedale_covidDB.db; foreign keys=True"))
             {
                 connessione.Open();
                 using (SQLiteCommand comando = new SQLiteCommand(String.Format("select * from {0}", nometabella), connessione))
@@ -37,9 +37,28 @@ namespace Ospedale_Covid
                 connessione.Close();
             }
         }
+
+        public void DataSourceComando(string comandosql, DataGridView dataGrid)
+        {
+            using (SQLiteConnection connessione = new SQLiteConnection(@"Data Source=ospedale_covidDB.db; foreign keys=True"))
+            {
+                connessione.Open();
+                using (SQLiteCommand comando = new SQLiteCommand(comandosql, connessione))
+                {
+                    SQLiteDataAdapter da = new SQLiteDataAdapter(comando);
+                    DataSet ds = new DataSet("tabelle");
+
+                    da.Fill(ds, "tabella");
+                    dataGrid.DataSource = ds.Tables["tabella"];
+                    dataGrid.Refresh();
+                }
+                connessione.Close();
+            }
+        }
+
         public void DataSourceWhere(string nometabella, string id, string nomeid, DataGridView tabComuni)
         {
-            using (SQLiteConnection connessione = new SQLiteConnection(@"Data Source=ospedale_covidDB.db"))
+            using (SQLiteConnection connessione = new SQLiteConnection(@"Data Source=ospedale_covidDB.db; foreign keys=True"))
             {
                 connessione.Open();
                 using (SQLiteCommand comando = new SQLiteCommand(String.Format("SELECT * FROM {0} WHERE {1} = '{2}'", nometabella, nomeid, id), connessione))
@@ -57,7 +76,7 @@ namespace Ospedale_Covid
         public void aggiungi(string comandosql, DataGridView dataGridView1)
         {
             dataGridView1.Columns.Clear();
-            string stringaConnessione = @"Data Source=ospedale_covidDB.db";
+            string stringaConnessione = @"Data Source=ospedale_covidDB.db; foreign keys=True";
 
             using (SQLiteConnection connessione = new SQLiteConnection(stringaConnessione))
             {
@@ -77,7 +96,7 @@ namespace Ospedale_Covid
         public string getData(string comandosql)
         {
             string var;
-            string stringaConnessione = @"Data Source=ospedale_covidDB.db";
+            string stringaConnessione = @"Data Source=ospedale_covidDB.db; foreign keys=True";
             using (SQLiteConnection connessione = new SQLiteConnection(stringaConnessione))
             {
                 connessione.Open();
@@ -90,9 +109,35 @@ namespace Ospedale_Covid
             }
             return var;
         }
+        public object[] getRiga(string query)
+        {
+            
+            string connectString = @"Data Source=ospedale_covidDB.db; foreign keys=True";
+            object[] Row = new object[0];
+            using (SQLiteConnection connection = new SQLiteConnection(connectString))
+            {
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    connection.Open();
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Row = new object[reader.FieldCount];
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                Row[i] = reader[i];
+                            }
+                        }
+                    }
+                }
+            }
+            return Row;
+        }
         public void esegui(string comandosql)
         {
-            string stringaConnessione = @"Data Source=ospedale_covidDB.db";
+            string stringaConnessione = @"Data Source=ospedale_covidDB.db; foreign keys=True";
             using (SQLiteConnection connessione = new SQLiteConnection(stringaConnessione))
             {
                 connessione.Open();
@@ -107,7 +152,7 @@ namespace Ospedale_Covid
         
         public void dropRow(string nometabella, string ID, string nomeID)
         {
-            string stringaConnessione = @"Data Source=ospedale_covidDB.db;";
+            string stringaConnessione = @"Data Source=ospedale_covidDB.db; foreign keys=True";
             using (SQLiteConnection connessione = new SQLiteConnection(stringaConnessione))
             {
                 connessione.Open();
@@ -151,7 +196,7 @@ namespace Ospedale_Covid
         public List<string> daColonnaALista(string nometabella, string colonna)
         {
             List<string> IDs = new List<string>();
-            string stringaConnessione = @"Data Source=ospedale_covidDB.db;";
+            string stringaConnessione = @"Data Source=ospedale_covidDB.db; foreign keys=True";
             using (SQLiteConnection connessione = new SQLiteConnection(stringaConnessione))
             {
                 connessione.Open();

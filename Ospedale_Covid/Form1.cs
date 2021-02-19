@@ -30,7 +30,7 @@ namespace Ospedale_Covid
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            timer1.Start();
         }
         private void esegui(string comandosql)
         {
@@ -152,6 +152,7 @@ namespace Ospedale_Covid
         private void iconButton1_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color7);
+            OpenChildForm(new Vaccini());
             iconPictureBox1.IconChar = iconButton1.IconChar;
             label1.Text = iconButton1.Text;
         }
@@ -165,6 +166,17 @@ namespace Ospedale_Covid
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+            lblgiorno.Text = DateTime.Now.ToString("ddd dd MMMM yyyy");
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
