@@ -14,12 +14,12 @@ namespace Ospedale_Covid
 {
     class Database
     {
-        
+
         public Database()
         {
-            
+
         }
-        
+
         public void DataSource(string nometabella, DataGridView tabComuni)
         {
             using (SQLiteConnection connessione = new SQLiteConnection(@"Data Source=ospedale_covidDB.db; foreign keys=True"))
@@ -55,7 +55,44 @@ namespace Ospedale_Covid
                 connessione.Close();
             }
         }
+        public bool checkDoublePKs(string id, string comandosql)
+        {
 
+            string str = "";
+
+            string stringaConnessione = @"Data Source=ospedale_covidDB.db";
+            using (SQLiteConnection connessione = new SQLiteConnection(stringaConnessione))
+            {
+                connessione.Open();
+                using (SQLiteCommand comando = new SQLiteCommand(comandosql, connessione))
+                {
+                    comando.ExecuteNonQuery();
+                    str = (string)comando.ExecuteScalar();
+                }
+                connessione.Close();
+            }
+            if (str != id)
+                return true;
+            else
+            {
+                MessageBox.Show("Utente con lo stesso Codice Fiscale già esistente", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+        }
+        public bool CheckTextBox(Panel panelTextBox)
+        {
+            foreach (Control txt in panelTextBox.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
+            {
+                if (txt is TextBox && txt.Text == "")
+                {
+                    MessageBox.Show("Controlla tutti i campi", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return true;
+                }
+                txt.Text.Trim();
+            }
+            return false;
+        }
         public void DataSourceWhere(string nometabella, string id, string nomeid, DataGridView tabComuni)
         {
             using (SQLiteConnection connessione = new SQLiteConnection(@"Data Source=ospedale_covidDB.db; foreign keys=True"))
@@ -111,7 +148,7 @@ namespace Ospedale_Covid
         }
         public object[] getRiga(string query)
         {
-            
+
             string connectString = @"Data Source=ospedale_covidDB.db; foreign keys=True";
             object[] Row = new object[0];
             using (SQLiteConnection connection = new SQLiteConnection(connectString))
@@ -149,7 +186,7 @@ namespace Ospedale_Covid
                 connessione.Close();
             }
         }
-        
+
         public void dropRow(string nometabella, string ID, string nomeID)
         {
             string stringaConnessione = @"Data Source=ospedale_covidDB.db; foreign keys=True";
@@ -162,7 +199,7 @@ namespace Ospedale_Covid
                     using (SQLiteCommand comando = new SQLiteCommand(connessione))
                     {
                         comando.CommandText = String.Format("DELETE FROM {0} WHERE {1} = '{2}'", nometabella, nomeID, ID);
-                        
+
                         comando.ExecuteNonQuery();
                     }
                     transaction.Commit();
@@ -208,7 +245,7 @@ namespace Ospedale_Covid
                         comando.CommandText = string.Format("SELECT {0} FROM {1}", colonna, nometabella);
 
                         SQLiteDataReader reader = comando.ExecuteReader();
-                        
+
                         while (reader.Read())
                         {
                             IDs.Add(reader.GetString(0));
@@ -219,6 +256,14 @@ namespace Ospedale_Covid
                 connessione.Close();
             }
             return IDs;
-        } 
+        }
+        public Dictionary<string, string> diventaDictionary(string nometabella, string chiave, string valore1)
+        {
+            List<string> app1 = daColonnaALista(nometabella, chiave);
+            List<string> app2 = daColonnaALista(nometabella, valore1);
+
+            var dct = app1.Zip(app2, (k, v) => new { Key = k, Value = v }).ToDictionary(x => x.Key, x => x.Value);
+            return dct;
+        }
     }
 }

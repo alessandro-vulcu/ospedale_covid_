@@ -25,4 +25,3 @@ C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Deb
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.InformazioniStruttura.resources
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.csprojAssemblyReference.cache
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Informazioni_pazienti.resources
-C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.csproj.CoreCompileInputs.cache

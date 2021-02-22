@@ -191,7 +191,11 @@ namespace Ospedale_Covid
 
         private void eliminaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (!this.dataGridView1.Rows[this.rowIndex].IsNewRow)
+            {
+                db.esegui(string.Format("DELETE FROM personale WHERE idPersonale = '{0}'", dataGridView1.Rows[this.rowIndex].Cells[0].Value.ToString()));
+                db.DataSource("personale", dataGridView1);
+            }
         }
 
         private void espandiToolStripMenuItem_Click(object sender, EventArgs e)

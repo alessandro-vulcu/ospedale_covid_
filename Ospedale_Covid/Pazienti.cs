@@ -32,31 +32,6 @@ namespace Ospedale_Covid
         }
         //INSERT INTO pazienti (nome, cognome, luogoNascita, dataNascita, codiceFiscale, telefono, email) VALUES ("Alessandro", "Vulcu", "Camposampiero", '2002-03-21', "1", "3341687061", "alexvulcu21@gmail.com")
         
-        private bool checkDoublePKs(string CF)
-        {
-            string comandosql = String.Format(@"SELECT codiceFiscale FROM pazienti WHERE codiceFiscale = '{0}'", CF);
-            string str = "";
-
-            string stringaConnessione = @"Data Source=ospedale_covidDB.db";
-            using (SQLiteConnection connessione = new SQLiteConnection(stringaConnessione))
-            {
-                connessione.Open();
-                using (SQLiteCommand comando = new SQLiteCommand(comandosql, connessione))
-                {
-                    comando.ExecuteNonQuery();
-                    str = (string)comando.ExecuteScalar();
-                }
-                connessione.Close();
-            }
-            if (str != CF)
-                return true;
-            else
-            {
-                MessageBox.Show("Utente con lo stesso Codice Fiscale già esistente", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-                
-        }
         
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -67,9 +42,9 @@ namespace Ospedale_Covid
         private void button1_Click(object sender, EventArgs e)
         {
             //generateID(txtNome.Text, txtCognome.Text);
-            if (!CheckTextBox(panel1))
+            if (!db.CheckTextBox(panel1))
             {
-                if (checkDoublePKs(txtCF.Text))
+                if (db.checkDoublePKs(txtCF.Text, String.Format(@"SELECT codiceFiscale FROM pazienti WHERE codiceFiscale = '{0}'", txtCF.Text)))
                 {
                     try
                     {
@@ -94,19 +69,6 @@ namespace Ospedale_Covid
         }
         
 
-        private bool CheckTextBox(Panel panelTextBox)
-        {
-            foreach(Control txt in panelTextBox.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
-            {
-                if (txt is TextBox && txt.Text == "")
-                {
-                    MessageBox.Show("Controlla tutti i campi", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return true;
-                }
-                txt.Text.Trim();
-            }
-            return false;
-        }
 
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -147,7 +109,7 @@ namespace Ospedale_Covid
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!CheckTextBox(panel1))
+            if (!db.CheckTextBox(panel1))
             {
                 try
                 {

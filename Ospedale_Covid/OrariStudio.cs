@@ -22,7 +22,7 @@ namespace Ospedale_Covid
             this.idPersonale = idPersonale;
             comboBox3.DataSource = db.daColonnaALista("pazienti", "codiceFiscale");
             comboBox4.DataSource = db.daColonnaALista("strutture", "idStruttura");
-            label5.Text = string.Format("{0} {1}", nome, cognome);
+            label5.Text = string.Format("Medico: {0} {1}", nome, cognome);
         }
 
         private void OrariStudio_Load(object sender, EventArgs e)
@@ -51,8 +51,8 @@ namespace Ospedale_Covid
         public void writeInLabel()
         {
             string comando = string.Format("SELECT idPersonale FROM personaleStrutture WHERE idPersonale = '{0}'", idPersonale);
-            
-            if(db.getData(comando) != "")
+            string a = db.getData(comando);
+            if (a != null)
             {
                 textBox1.Text = string.Format("Il medico corrente è assegnato alla struttura \n" + db.getData(string.Format("SELECT idStruttura FROM personaleStrutture WHERE idPersonale = '{0}'", idPersonale)));
             }
@@ -155,6 +155,11 @@ namespace Ospedale_Covid
                 this.contextMenuStrip2.Show(this.dataGridView1, e.Location);
                 contextMenuStrip2.Show(Cursor.Position);
             }
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
