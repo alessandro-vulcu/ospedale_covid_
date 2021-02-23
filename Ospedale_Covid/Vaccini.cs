@@ -28,7 +28,7 @@ namespace Ospedale_Covid
         {
             db.DataSource("vacciniCovid", dataGridView1);
             db.DataSource("vaccinazioni", dataGridView2);
-            comboStruttura.DataSource = db.daColonnaALista("strutture", "idStruttura");
+            //comboStruttura.DataSource = db.daColonnaALista("strutture", "idStruttura");
             db.caricaInComboBox(dataGridView1, comboBox2);
         }
 
@@ -38,7 +38,7 @@ namespace Ospedale_Covid
             {
                 try
                 {
-                    string comando1 = string.Format("INSERT INTO vacciniCovid VALUES(\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\", \"{6}\" , \"{7}\", \"{8}\")", db.generateID(), comboStruttura.Text, txtNome.Text, txtCasaFarmaceutica.Text, txtLotto.Text, dataProduzione.Text, dataScadenza.Text, dataConsegna.Text, txtBugiardino.Text);
+                    string comando1 = string.Format("INSERT INTO vacciniCovid VALUES(\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\", \"{6}\")", db.generateID(), txtNome.Text, txtCasaFarmaceutica.Text, txtLotto.Text, dataProduzione.Text, dataScadenza.Text, txtBugiardino.Text);
                     db.esegui(comando1);
                     foreach (Control txt in panel1.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
                         if (txt is TextBox)
@@ -199,7 +199,29 @@ namespace Ospedale_Covid
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            if (!db.CheckTextBox(panel1))
+            {
+                try
+                {
+                    string comando1 = string.Format("UPDATE vacciniCovid SET nomeVaccino = \"{1}\", casaFarmaceutica = \"{2}\", lotto = \"{3}\", dataProduzione = \"{4}\", dataScadenza = \"{5}\", bugiardino = \"{7}\" WHERE idVaccinoCovid = \"{8}\"", txtNome.Text, txtCasaFarmaceutica.Text, txtLotto.Text, dataProduzione.Text, dataScadenza.Text,txtBugiardino.Text, currentPK);
+                    db.esegui(comando1);
+                    foreach (Control txt in panel1.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
+                    {
+                        if (txt is TextBox || txt is ComboBox)
+                        {
+                            txt.Text = "";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                db.DataSource("vacciniCovid", dataGridView1);
+                button1.Enabled = true;
+                button3.Enabled = false;
+                currentPK = "";
+            }
         }
 
         private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -208,12 +230,24 @@ namespace Ospedale_Covid
             button3.Enabled = true;
 
             currentPK = Convert.ToString(db.getData(string.Format(@"SELECT idVaccinoCovid FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
-            txtTipo.Text = Convert.ToString(db.getData(string.Format(@"SELECT tipo FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
-            txtMalattia.Text = Convert.ToString(db.getData(string.Format(@"SELECT malattiaCurata FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
-            txtCasaFarma.Text = Convert.ToString(db.getData(string.Format(@"SELECT casaFarmaceutica FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
-            dataScadenza2.Value = DateTime.ParseExact(db.getData(string.Format(@"SELECT dataScadenza FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            dataProduzione2.Value = DateTime.ParseExact(db.getData(string.Format(@"SELECT dataProduzione FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            txtLotto2.Text = db.getData(string.Format(@"SELECT lotto FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString()));
+            txtNome.Text = Convert.ToString(db.getData(string.Format(@"SELECT nomeVaccino FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtCasaFarmaceutica.Text = Convert.ToString(db.getData(string.Format(@"SELECT casaFarmaceutica FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtLotto.Text = db.getData(string.Format(@"SELECT lotto FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString()));
+            dataScadenza.Value = DateTime.ParseExact(db.getData(string.Format(@"SELECT dataScadenza FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            dataProduzione.Value = DateTime.ParseExact(db.getData(string.Format(@"SELECT dataProduzione FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            txtBugiardino.Text = Convert.ToString(db.getData(string.Format(@"SELECT bugiardino FROM vacciniCovid WHERE idVaccinoCovid = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+
+        }
+
+        private void inviaAStrutturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Spedizione sp = new Spedizione(dataGridView1.Rows[this.rowIndex].Cells[0].Value.ToString());
+            sp.ShowDialog();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

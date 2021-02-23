@@ -14,6 +14,7 @@ namespace Ospedale_Covid
     {
         Database db;
         string idPersonale;
+        
         int rowIndex;
         public InormazioniMedico(string idPersonale, string nome, string cognome)
         {
@@ -23,14 +24,24 @@ namespace Ospedale_Covid
             comboBox3.DataSource = db.daColonnaALista("pazienti", "codiceFiscale");
             comboBox4.DataSource = db.daColonnaALista("strutture", "idStruttura");
             label5.Text = string.Format("Medico: {0} {1}", nome, cognome);
+            db.DataSource("turni", dataGridView3);
+            dateTimePicker1.ShowUpDown = true;
+            dateTimePicker2.ShowUpDown = true;
         }
 
         private void OrariStudio_Load(object sender, EventArgs e)
         {
             db.DataSourceWhere("orariPersonale", idPersonale, "idPersonale", dataGridView1);
-            db.DataSourceWhere("mediciPaziente", idPersonale, "idPersonale", dataGridView2);
+            //db.DataSourceWhere("mediciPaziente", idPersonale, "idPersonale", dataGridView2);
+            joinTraTabelle();
             writeInLabel();
             bloccaMediciBase(selectTipo());
+            controllaSeOperatoreCovid();
+        }
+        public void joinTraTabelle()
+        {
+            string comando = string.Format("SELECT nome, cognome, pazienti.codiceFiscale FROM pazienti INNER JOIN mediciPaziente ON pazienti.codiceFiscale = mediciPaziente.idPaziente WHERE idPersonale = '{0}'", idPersonale);
+            db.DataSourceComando(comando, dataGridView2);
         }
         public bool selectTipo()
         {
@@ -77,7 +88,7 @@ namespace Ospedale_Covid
             {
                 string comando = string.Format("INSERT INTO mediciPaziente VALUES (\"{0}\", \"{1}\")", idPersonale, comboBox3.Text); ;
                 db.esegui(comando);
-                db.DataSourceWhere("mediciPaziente", idPersonale, "idPersonale", dataGridView2);
+                joinTraTabelle();
             }
             catch(Exception ex)
             {
@@ -88,23 +99,29 @@ namespace Ospedale_Covid
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            if (controllaSovrapposizioneTurni())
             {
-                string comando = string.Format("INSERT INTO personaleStrutture VALUES (\"{0}\", \"{1}\")", idPersonale, comboBox4.Text);
-                db.esegui(comando);
-                writeInLabel();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                try
+                {
+
+                    string comando = string.Format("INSERT INTO turni VALUES (\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\")", db.generateID(), db.getData(string.Format("SELECT idoperatoreCovid FROM operatoreCovid WHERE idPersonale = '{0}'", idPersonale)), dateTimePicker3.Text, dateTimePicker1.Text, dateTimePicker2.Text);
+                    db.esegui(comando);
+                    db.DataSource("turni", dataGridView3);
+                    writeInLabel();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string comando = string.Format("DELETE FROM personaleStrutture WHERE  idPersonale = \"{0}\"", idPersonale);
+            string comando = string.Format("DELETE FROM turni WHERE id = \"{0}\"", idPersonale);
             db.esegui(comando);
+            db.DataSource("turni", dataGridView3);
             writeInLabel();
         }
 
@@ -129,9 +146,9 @@ namespace Ospedale_Covid
         {
             if (!this.dataGridView2.Rows[this.rowIndex].IsNewRow)
             {
-                string comando = string.Format("DELETE FROM mediciPaziente WHERE idPersonale = '{0}' AND idPaziente = '{1}'", dataGridView2.Rows[this.rowIndex].Cells[0].Value.ToString(), dataGridView2.Rows[this.rowIndex].Cells[1].Value.ToString());
+                string comando = string.Format("DELETE FROM mediciPaziente WHERE idPersonale = '{0}' AND idPaziente = '{1}'", idPersonale, dataGridView2.Rows[this.rowIndex].Cells[2].Value.ToString());
                 db.esegui(comando);
-                db.DataSource("mediciPaziente", dataGridView2);
+                joinTraTabelle();
             }
         }
 
@@ -161,5 +178,89 @@ namespace Ospedale_Covid
         {
 
         }
+        public void controllaSeOperatoreCovid()
+        {
+            string comando = string.Format("SELECT idPersonale FROM operatoreCovid WHERE idPersonale = '{0}'", idPersonale);
+            string id = db.getData(comando);
+            if(id != null)
+            {
+                checkBox1.Checked = true;
+                comboBox4.Enabled = true;
+                button1.Enabled = true;
+                button2.Enabled = true;
+                groupBox1.Enabled = false;
+                groupBox2.Enabled = false;
+            }
+            else
+            {
+                checkBox1.Checked = false;
+                comboBox4.Enabled = false;
+                button1.Enabled = false;
+                button2.Enabled = false;
+                groupBox1.Enabled = true;
+                groupBox2.Enabled = true;
+            }
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked == true)
+            {
+                try
+                {
+                    string comando = string.Format("INSERT INTO operatoreCovid VALUES('{0}', '{1}')", db.generateID(), idPersonale);
+                    db.esegui(comando);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
+            else
+            {
+                try
+                {
+                    string comando = string.Format("DELETE FROM operatoreCovid WHERE idPersonale = '{0}'", idPersonale);
+                    db.esegui(comando);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            controllaSeOperatoreCovid();
+        }
+
+        private void dataGridView3_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
+            {
+                this.dataGridView3.Rows[e.RowIndex].Selected = true;
+                this.rowIndex = e.RowIndex;
+                this.dataGridView3.CurrentCell = this.dataGridView3.Rows[e.RowIndex].Cells[1];
+                this.contextMenuStrip3.Show(this.dataGridView3, e.Location);
+                contextMenuStrip3.Show(Cursor.Position);
+            }
+        }
+
+        private void eliminaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (!this.dataGridView3.Rows[this.rowIndex].IsNewRow)
+            {
+                string comando = string.Format("DELETE FROM turni WHERE idTurno = '{0}'", dataGridView3.Rows[this.rowIndex].Cells[0].Value.ToString());
+                db.esegui(comando);
+                db.DataSource("turni", dataGridView3);
+            }
+        }
+        public bool controllaSovrapposizioneTurni()
+        {
+            if(db.getData(string.Format("SELECT dataTurno FROM turni WHERE idOperatoreCovid = '{0}' AND dataTurno = '{1}'", db.getData(string.Format("SELECT idoperatoreCovid FROM operatoreCovid WHERE idPersonale = '{0}'", idPersonale)), dateTimePicker3.Text)) != null)
+            {
+                MessageBox.Show("ERRORE: questo operatore ha già un turno assegnato per questa data");
+                return false;
+            }
+            return true;
+        }
+        
     }
 }

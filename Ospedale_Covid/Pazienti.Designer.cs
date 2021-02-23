@@ -47,12 +47,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtRegione = new System.Windows.Forms.TextBox();
-            this.txtProvincia = new System.Windows.Forms.TextBox();
             this.txtCAP = new System.Windows.Forms.TextBox();
             this.txtVia = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtStato = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtNascita = new System.Windows.Forms.TextBox();
             this.txtCognome = new System.Windows.Forms.TextBox();
@@ -64,6 +61,9 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.espandiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtProvincia = new System.Windows.Forms.ComboBox();
+            this.txtRegione = new System.Windows.Forms.ComboBox();
+            this.txtStato = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -97,6 +97,8 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(51)))));
+            this.panel1.Controls.Add(this.txtRegione);
+            this.panel1.Controls.Add(this.txtProvincia);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.txtData);
             this.panel1.Controls.Add(this.button1);
@@ -113,12 +115,10 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtRegione);
-            this.panel1.Controls.Add(this.txtProvincia);
+            this.panel1.Controls.Add(this.txtStato);
             this.panel1.Controls.Add(this.txtCAP);
             this.panel1.Controls.Add(this.txtVia);
             this.panel1.Controls.Add(this.txtEmail);
-            this.panel1.Controls.Add(this.txtStato);
             this.panel1.Controls.Add(this.txtTelefono);
             this.panel1.Controls.Add(this.txtNascita);
             this.panel1.Controls.Add(this.txtCognome);
@@ -308,22 +308,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Nome";
             // 
-            // txtRegione
-            // 
-            this.txtRegione.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegione.Location = new System.Drawing.Point(30, 659);
-            this.txtRegione.Name = "txtRegione";
-            this.txtRegione.Size = new System.Drawing.Size(199, 28);
-            this.txtRegione.TabIndex = 10;
-            // 
-            // txtProvincia
-            // 
-            this.txtProvincia.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProvincia.Location = new System.Drawing.Point(30, 604);
-            this.txtProvincia.Name = "txtProvincia";
-            this.txtProvincia.Size = new System.Drawing.Size(199, 28);
-            this.txtProvincia.TabIndex = 9;
-            // 
             // txtCAP
             // 
             this.txtCAP.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -347,14 +331,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(199, 28);
             this.txtEmail.TabIndex = 6;
-            // 
-            // txtStato
-            // 
-            this.txtStato.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStato.Location = new System.Drawing.Point(30, 718);
-            this.txtStato.Name = "txtStato";
-            this.txtStato.Size = new System.Drawing.Size(199, 28);
-            this.txtStato.TabIndex = 11;
             // 
             // txtTelefono
             // 
@@ -465,6 +441,166 @@
             this.espandiToolStripMenuItem.Text = "Espandi";
             this.espandiToolStripMenuItem.Click += new System.EventHandler(this.espandiToolStripMenuItem_Click);
             // 
+            // txtProvincia
+            // 
+            this.txtProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtProvincia.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProvincia.FormattingEnabled = true;
+            this.txtProvincia.Items.AddRange(new object[] {
+            "Agrigento",
+            "Alessandria",
+            "Ancona",
+            "Aosta",
+            "Arezzo",
+            "Ascoli Piceno",
+            "Asti",
+            "Avellino",
+            "Bari",
+            "Barletta-Andria-Trani",
+            "Belluno",
+            "Benevento",
+            "Bergamo",
+            "Biella",
+            "Bologna",
+            "Bolzano",
+            "Brescia",
+            "Brindisi",
+            "Cagliari",
+            "Caltanissetta",
+            "Campobasso",
+            "Carbonia-Iglesias",
+            "Caserta",
+            "Catania",
+            "Catanzaro",
+            "Chieti",
+            "Como",
+            "Cosenza",
+            "Cremona",
+            "Crotone",
+            "Cuneo",
+            "Enna",
+            "Fermo",
+            "Ferrara",
+            "Firenze",
+            "Foggia",
+            "Forlì-Cesena",
+            "Frosinone",
+            "Genova",
+            "Gorizia",
+            "Grosseto",
+            "Imperia",
+            "Isernia",
+            "La Spezia",
+            "L\'Aquila",
+            "Latina",
+            "Lecce",
+            "Lecco",
+            "Livorno",
+            "Lodi",
+            "Lucca",
+            "Macerata",
+            "Mantova",
+            "Massa-Carrara",
+            "Matera",
+            "Messina",
+            "Milano",
+            "Modena",
+            "Monza e della Brianza",
+            "Napoli",
+            "Novara",
+            "Nuoro",
+            "Olbia-Tempio",
+            "Oristano",
+            "Padova",
+            "Palermo",
+            "Parma",
+            "Pavia",
+            "Perugia",
+            "Pesaro e Urbino",
+            "Pescara",
+            "Piacenza",
+            "Pisa",
+            "Pistoia",
+            "Pordenone",
+            "Potenza",
+            "Prato",
+            "Ragusa",
+            "Ravenna",
+            "Reggio Calabria",
+            "Reggio Emilia",
+            "Rieti",
+            "Rimini",
+            "Roma",
+            "Rovigo",
+            "Salerno",
+            "Medio Campidano",
+            "Sassari",
+            "Savona",
+            "Siena",
+            "Siracusa",
+            "Sondrio",
+            "Taranto",
+            "Teramo",
+            "Terni",
+            "Torino",
+            "Ogliastra",
+            "Trapani",
+            "Trento",
+            "Treviso",
+            "Trieste",
+            "Udine",
+            "Varese",
+            "Venezia",
+            "Verbano-Cusio-Ossola",
+            "Vercelli",
+            "Verona",
+            "Vibo Valentia",
+            "Vicenza",
+            "Viterbo"});
+            this.txtProvincia.Location = new System.Drawing.Point(30, 603);
+            this.txtProvincia.Name = "txtProvincia";
+            this.txtProvincia.Size = new System.Drawing.Size(199, 29);
+            this.txtProvincia.TabIndex = 14;
+            // 
+            // txtRegione
+            // 
+            this.txtRegione.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtRegione.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegione.FormattingEnabled = true;
+            this.txtRegione.Items.AddRange(new object[] {
+            "Abruzzo",
+            "Basilicata",
+            "Calabria",
+            "Campania",
+            "Emilia Romagna",
+            "Friuli Venezia Giulia",
+            "Lazio",
+            "Liguria",
+            "Lombardia",
+            "Marche",
+            "Molise",
+            "Piemonte",
+            "Puglia",
+            "Sardegna",
+            "Sicilia",
+            "Toscana",
+            "Trentino Alto Adige",
+            "Umbria",
+            "Valle d\'Aosta",
+            "Veneto"});
+            this.txtRegione.Location = new System.Drawing.Point(30, 659);
+            this.txtRegione.Name = "txtRegione";
+            this.txtRegione.Size = new System.Drawing.Size(199, 29);
+            this.txtRegione.TabIndex = 14;
+            // 
+            // txtStato
+            // 
+            this.txtStato.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStato.Location = new System.Drawing.Point(30, 718);
+            this.txtStato.Name = "txtStato";
+            this.txtStato.Size = new System.Drawing.Size(199, 28);
+            this.txtStato.TabIndex = 8;
+            // 
             // Pazienti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -506,12 +642,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtRegione;
-        private System.Windows.Forms.TextBox txtProvincia;
         private System.Windows.Forms.TextBox txtCAP;
         private System.Windows.Forms.TextBox txtVia;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtStato;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtCF;
         private System.Windows.Forms.TextBox txtNascita;
@@ -525,5 +658,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem eliminaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem espandiToolStripMenuItem;
+        private System.Windows.Forms.ComboBox txtProvincia;
+        private System.Windows.Forms.ComboBox txtRegione;
+        private System.Windows.Forms.TextBox txtStato;
     }
 }

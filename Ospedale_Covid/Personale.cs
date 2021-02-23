@@ -22,7 +22,7 @@ namespace Ospedale_Covid
         {
             InitializeComponent();
             db = new Database();
-
+            button2.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)

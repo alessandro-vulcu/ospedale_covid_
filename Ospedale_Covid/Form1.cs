@@ -180,5 +180,13 @@ namespace Ospedale_Covid
         {
 
         }
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color7);
+            
+            iconPictureBox1.IconChar = iconButton4.IconChar;
+            label1.Text = iconButton4.Text;
+        }
     }
 }

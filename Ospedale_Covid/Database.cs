@@ -84,7 +84,7 @@ namespace Ospedale_Covid
         {
             foreach (Control txt in panelTextBox.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
             {
-                if (txt is TextBox && txt.Text == "")
+                if ((txt is TextBox || txt is ComboBox) && txt.Text == "")
                 {
                     MessageBox.Show("Controlla tutti i campi", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return true;
