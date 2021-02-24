@@ -74,7 +74,7 @@ namespace Ospedale_Covid
             {
                 try
                 {
-                    string comando1 = string.Format("INSERT INTO strutture VALUES(\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\", \"{6}\", \"{7}\")", db.generateID(), comboRes.Text, txtNome.Text, txtIndirizzo.Text,txtMail.Text, txtTelefono.Text, txtMax.Text, txtDisponibilità.Text);
+                    string comando1 = string.Format("INSERT INTO strutture VALUES(\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\", \"{6}\", \"{7}\", \"{8}\")", db.generateID(), comboRes.Text, txtNome.Text, txtIndirizzo.Text,txtMail.Text, txtTelefono.Text, txtMax.Text, txtDisponibilità.Text, txtSomministrazioni.Text);
                     db.esegui(comando1);
                     foreach (Control txt in panel1.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
                         if (txt is TextBox)

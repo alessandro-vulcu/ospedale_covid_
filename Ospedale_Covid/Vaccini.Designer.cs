@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
@@ -51,10 +52,12 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtBugiardino = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
@@ -72,28 +75,25 @@
             this.txtCasaFarma = new System.Windows.Forms.TextBox();
             this.txtMalattia = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inviaAStrutturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.inviaAStrutturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -107,7 +107,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(976, 656);
+            this.groupBox2.Size = new System.Drawing.Size(913, 656);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Vaccini Covid";
@@ -122,7 +122,7 @@
             this.panel2.Controls.Add(this.textBox6);
             this.panel2.Location = new System.Drawing.Point(300, 597);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(670, 44);
+            this.panel2.Size = new System.Drawing.Size(607, 44);
             this.panel2.TabIndex = 9;
             // 
             // comboBox2
@@ -132,17 +132,35 @@
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(264, 8);
+            this.comboBox2.Location = new System.Drawing.Point(201, 8);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 29);
             this.comboBox2.TabIndex = 2;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(184)))), ((int)(((byte)(204)))));
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 20;
+            this.iconButton1.Location = new System.Drawing.Point(533, 8);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(67, 29);
+            this.iconButton1.TabIndex = 1;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // textBox6
             // 
             this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox6.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(391, 8);
+            this.textBox6.Location = new System.Drawing.Point(328, 8);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(199, 29);
             this.textBox6.TabIndex = 0;
@@ -321,15 +339,29 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Ordina vaccini";
             // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(51)))));
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.TruckLoading;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 44;
+            this.iconPictureBox1.Location = new System.Drawing.Point(4, 4);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(44, 44);
+            this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.iconPictureBox1.TabIndex = 0;
+            this.iconPictureBox1.TabStop = false;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -338,10 +370,11 @@
             this.dataGridView1.Location = new System.Drawing.Point(300, 27);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(670, 564);
+            this.dataGridView1.Size = new System.Drawing.Size(607, 564);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
@@ -357,7 +390,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 674);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(976, 616);
+            this.groupBox1.Size = new System.Drawing.Size(913, 616);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Altri vaccini";
@@ -372,7 +405,7 @@
             this.panel4.Controls.Add(this.textBox5);
             this.panel4.Location = new System.Drawing.Point(300, 558);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(670, 44);
+            this.panel4.Size = new System.Drawing.Size(607, 44);
             this.panel4.TabIndex = 10;
             // 
             // comboBox3
@@ -382,17 +415,34 @@
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(264, 8);
+            this.comboBox3.Location = new System.Drawing.Point(201, 8);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 29);
             this.comboBox3.TabIndex = 2;
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(184)))), ((int)(((byte)(204)))));
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 20;
+            this.iconButton2.Location = new System.Drawing.Point(533, 8);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(67, 29);
+            this.iconButton2.TabIndex = 1;
+            this.iconButton2.UseVisualStyleBackColor = false;
             // 
             // textBox5
             // 
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox5.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(391, 8);
+            this.textBox5.Location = new System.Drawing.Point(328, 8);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(199, 29);
             this.textBox5.TabIndex = 0;
@@ -567,14 +617,28 @@
             this.label18.TabIndex = 1;
             this.label18.Text = "Aggiungi vaccini";
             // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(51)))));
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.ShieldVirus;
+            this.iconPictureBox2.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox2.IconSize = 44;
+            this.iconPictureBox2.Location = new System.Drawing.Point(4, 4);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Size = new System.Drawing.Size(44, 44);
+            this.iconPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.iconPictureBox2.TabIndex = 0;
+            this.iconPictureBox2.TabStop = false;
+            // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -585,7 +649,7 @@
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(670, 513);
+            this.dataGridView2.Size = new System.Drawing.Size(607, 513);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseUp);
             this.dataGridView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseDoubleClick);
@@ -602,9 +666,16 @@
             // eliminaToolStripMenuItem
             // 
             this.eliminaToolStripMenuItem.Name = "eliminaToolStripMenuItem";
-            this.eliminaToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.eliminaToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
             this.eliminaToolStripMenuItem.Text = "Elimina";
             this.eliminaToolStripMenuItem.Click += new System.EventHandler(this.eliminaToolStripMenuItem_Click);
+            // 
+            // inviaAStrutturaToolStripMenuItem
+            // 
+            this.inviaAStrutturaToolStripMenuItem.Name = "inviaAStrutturaToolStripMenuItem";
+            this.inviaAStrutturaToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.inviaAStrutturaToolStripMenuItem.Text = "Invia a struttura...";
+            this.inviaAStrutturaToolStripMenuItem.Click += new System.EventHandler(this.inviaAStrutturaToolStripMenuItem_Click);
             // 
             // contextMenuStrip2
             // 
@@ -620,76 +691,6 @@
             this.eliminaToolStripMenuItem1.Size = new System.Drawing.Size(127, 24);
             this.eliminaToolStripMenuItem1.Text = "Elimina";
             this.eliminaToolStripMenuItem1.Click += new System.EventHandler(this.eliminaToolStripMenuItem1_Click);
-            // 
-            // inviaAStrutturaToolStripMenuItem
-            // 
-            this.inviaAStrutturaToolStripMenuItem.Name = "inviaAStrutturaToolStripMenuItem";
-            this.inviaAStrutturaToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.inviaAStrutturaToolStripMenuItem.Text = "Invia a struttura...";
-            this.inviaAStrutturaToolStripMenuItem.Click += new System.EventHandler(this.inviaAStrutturaToolStripMenuItem_Click);
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(184)))), ((int)(((byte)(204)))));
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 20;
-            this.iconButton2.Location = new System.Drawing.Point(596, 8);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(67, 29);
-            this.iconButton2.TabIndex = 1;
-            this.iconButton2.UseVisualStyleBackColor = false;
-            // 
-            // iconPictureBox2
-            // 
-            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(51)))));
-            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.ShieldVirus;
-            this.iconPictureBox2.IconColor = System.Drawing.Color.White;
-            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.IconSize = 44;
-            this.iconPictureBox2.Location = new System.Drawing.Point(4, 4);
-            this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Size = new System.Drawing.Size(44, 44);
-            this.iconPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.iconPictureBox2.TabIndex = 0;
-            this.iconPictureBox2.TabStop = false;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(184)))), ((int)(((byte)(204)))));
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 20;
-            this.iconButton1.Location = new System.Drawing.Point(596, 8);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(67, 29);
-            this.iconButton1.TabIndex = 1;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(51)))));
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.TruckLoading;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 44;
-            this.iconPictureBox1.Location = new System.Drawing.Point(4, 4);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(44, 44);
-            this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.iconPictureBox1.TabIndex = 0;
-            this.iconPictureBox1.TabStop = false;
             // 
             // Vaccini
             // 
@@ -710,17 +711,17 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

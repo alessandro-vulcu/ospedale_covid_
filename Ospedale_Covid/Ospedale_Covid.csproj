@@ -70,6 +70,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboboxItem.cs" />
+    <Compile Include="Conferma Vaccino.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Conferma Vaccino.Designer.cs">
+      <DependentUpon>Conferma Vaccino.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +120,12 @@
     <Compile Include="Personale.Designer.cs">
       <DependentUpon>Personale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Prenotazioni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prenotazioni.Designer.cs">
+      <DependentUpon>Prenotazioni.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spedizione.cs">
@@ -139,6 +152,9 @@
     <Compile Include="Vaccini.Designer.cs">
       <DependentUpon>Vaccini.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Conferma Vaccino.resx">
+      <DependentUpon>Conferma Vaccino.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Personale.resx">
       <DependentUpon>Personale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prenotazioni.resx">
+      <DependentUpon>Prenotazioni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

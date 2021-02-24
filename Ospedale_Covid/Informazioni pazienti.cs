@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Ospedale_Covid.Gestionale;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,7 +28,8 @@ namespace Ospedale_Covid
             selectResidenza();
             //db.diventaDictionary("vaccinazioni", "idVaccino", "malattiaCurata");
             scriviInLabel();
-            comboBox1.DataSource = db.daColonnaALista("vaccinazioni", "idVaccino");
+            fillComboVaccini();
+            //comboBox1.DataSource = db.daColonnaALista("vaccinazioni", "idVaccino");
             db.DataSourceComando(string.Format(@"SELECT * FROM pazientiVaccinazioni WHERE idPaziente = '{0}'", idPaziente), dataGridView1);
             
         }
@@ -54,7 +57,10 @@ namespace Ospedale_Covid
         {
             try
             {
-                string comando = string.Format("INSERT INTO pazientiVaccinazioni VALUES('{0}', '{1}', '{2}', '{3}', '{4}')", idPaziente, comboBox1.Text, dateTimePicker1.Text, dateTimePicker2.Text, textBox8.Text);
+                ComboboxItem c = (ComboboxItem)comboBox1.SelectedItem;
+                string idv = c.Value.ToString();
+
+                string comando = string.Format("INSERT INTO pazientiVaccinazioni VALUES('{0}', '{1}', '{2}', '{3}', '{4}')", idPaziente, idv, dateTimePicker1.Text, dateTimePicker2.Text, textBox8.Text);
                 db.esegui(comando);
                 db.DataSource("pazientiVaccinazioni", dataGridView1);
             }
@@ -83,6 +89,26 @@ namespace Ospedale_Covid
                 this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[1];
                 this.contextMenuStrip1.Show(this.dataGridView1, e.Location);
                 contextMenuStrip1.Show(Cursor.Position);
+            }
+        }
+        private void fillComboVaccini()
+        {
+            string cmd = "SELECT * FROM vaccinazioni";
+            comboBox1.DisplayMember = "Text";
+            comboBox1.ValueMember = "Value";
+            using (SQLiteConnection connessione = new SQLiteConnection(@"Data Source=ospedale_covidDB.db; foreign keys=True"))
+            {
+                connessione.Open();
+                using (SQLiteCommand comando = new SQLiteCommand(cmd, connessione))
+                {
+                    SQLiteDataReader dr = comando.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        comboBox1.Items.Add(new ComboboxItem(dr["tipo"].ToString(), dr["idVaccino"].ToString()));
+                    }
+                    dr.Close();
+                }
+                connessione.Close();
             }
         }
     }

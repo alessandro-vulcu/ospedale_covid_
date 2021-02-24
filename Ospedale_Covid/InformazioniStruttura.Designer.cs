@@ -199,6 +199,7 @@ namespace Ospedale_Covid
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -265,6 +266,7 @@ namespace Ospedale_Covid
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "InformazioniStruttura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

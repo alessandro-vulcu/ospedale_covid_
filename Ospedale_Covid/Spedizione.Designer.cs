@@ -42,6 +42,20 @@ namespace Ospedale_Covid
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // button1
+            // 
+            button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(107)))));
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            button1.Location = new System.Drawing.Point(74, 238);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(119, 35);
+            button1.TabIndex = 3;
+            button1.Text = "Spedisci";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -82,20 +96,6 @@ namespace Ospedale_Covid
             this.label2.Size = new System.Drawing.Size(85, 24);
             this.label2.TabIndex = 2;
             this.label2.Text = "Quantità";
-            // 
-            // button1
-            // 
-            button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(107)))));
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            button1.Location = new System.Drawing.Point(74, 238);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(119, 35);
-            button1.TabIndex = 3;
-            button1.Text = "Spedisci";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dateTimePicker1
             // 
@@ -138,7 +138,7 @@ namespace Ospedale_Covid
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Spedizione";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

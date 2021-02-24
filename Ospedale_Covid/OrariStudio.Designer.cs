@@ -32,12 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,10 +43,14 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -60,21 +61,18 @@
             this.eliminaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.contextMenuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -132,24 +130,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(235, 29);
             this.comboBox1.TabIndex = 4;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(107)))));
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(216, 416);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(106, 52);
-            this.iconButton1.TabIndex = 3;
-            this.iconButton1.Text = "Aggiungi";
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // label4
             // 
@@ -242,24 +222,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Assegnazione Medico di Base";
             // 
-            // iconButton2
-            // 
-            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(107)))));
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.Color.White;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton2.IconColor = System.Drawing.Color.Black;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.Location = new System.Drawing.Point(179, 254);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(181, 48);
-            this.iconButton2.TabIndex = 2;
-            this.iconButton2.Text = "Aggiungi";
-            this.iconButton2.UseVisualStyleBackColor = false;
-            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
-            // 
             // comboBox3
             // 
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -279,14 +241,6 @@
             this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.Location = new System.Drawing.Point(6, 63);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -317,6 +271,59 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Assegnazione strutture";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker3.Location = new System.Drawing.Point(313, 341);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(200, 28);
+            this.dateTimePicker3.TabIndex = 14;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker2.Location = new System.Drawing.Point(313, 398);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 28);
+            this.dateTimePicker2.TabIndex = 13;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(30, 341);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(200, 29);
+            this.comboBox4.TabIndex = 12;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(30, 398);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 28);
+            this.dateTimePicker1.TabIndex = 11;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(8, 139);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
+            this.dataGridView3.RowHeadersWidth = 51;
+            this.dataGridView3.RowTemplate.Height = 24;
+            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView3.Size = new System.Drawing.Size(523, 167);
+            this.dataGridView3.TabIndex = 10;
+            this.dataGridView3.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseUp);
             // 
             // checkBox1
             // 
@@ -430,67 +437,6 @@
             this.eliminaToolStripMenuItem1.Text = "Elimina";
             this.eliminaToolStripMenuItem1.Click += new System.EventHandler(this.eliminaToolStripMenuItem1_Click);
             // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView3.Location = new System.Drawing.Point(8, 139);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.RowHeadersWidth = 51;
-            this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(523, 167);
-            this.dataGridView3.TabIndex = 10;
-            this.dataGridView3.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseUp);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(30, 398);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 28);
-            this.dateTimePicker1.TabIndex = 11;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(30, 341);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(200, 29);
-            this.comboBox4.TabIndex = 12;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(313, 398);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 28);
-            this.dateTimePicker2.TabIndex = 13;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(313, 341);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 28);
-            this.dateTimePicker3.TabIndex = 14;
-            // 
             // contextMenuStrip3
             // 
             this.contextMenuStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -506,6 +452,42 @@
             this.eliminaToolStripMenuItem2.Text = "Elimina";
             this.eliminaToolStripMenuItem2.Click += new System.EventHandler(this.eliminaToolStripMenuItem2_Click);
             // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(107)))));
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton2.ForeColor = System.Drawing.Color.White;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton2.IconColor = System.Drawing.Color.Black;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.Location = new System.Drawing.Point(179, 254);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(181, 48);
+            this.iconButton2.TabIndex = 2;
+            this.iconButton2.Text = "Aggiungi";
+            this.iconButton2.UseVisualStyleBackColor = false;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(78)))), ((int)(((byte)(107)))));
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.Location = new System.Drawing.Point(216, 416);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(106, 52);
+            this.iconButton1.TabIndex = 3;
+            this.iconButton1.Text = "Aggiungi";
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
             // InormazioniMedico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -519,6 +501,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "InormazioniMedico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -531,9 +514,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.contextMenuStrip3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

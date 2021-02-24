@@ -146,6 +146,22 @@ namespace Ospedale_Covid
             }
             return var;
         }
+        public int getDataInt(string comandosql)
+        {
+            int var;
+            string stringaConnessione = @"Data Source=ospedale_covidDB.db; foreign keys=True";
+            using (SQLiteConnection connessione = new SQLiteConnection(stringaConnessione))
+            {
+                connessione.Open();
+                using (SQLiteCommand comando = new SQLiteCommand(comandosql, connessione))
+                {
+                    comando.ExecuteNonQuery();
+                    var = Convert.ToInt32(comando.ExecuteScalar());
+                }
+                connessione.Close();
+            }
+            return var;
+        }
         public object[] getRiga(string query)
         {
 
@@ -265,5 +281,20 @@ namespace Ospedale_Covid
             var dct = app1.Zip(app2, (k, v) => new { Key = k, Value = v }).ToDictionary(x => x.Key, x => x.Value);
             return dct;
         }
+        public string converter(string str)
+        {
+            string[] st = str.Split('/');
+            DateTime d = new DateTime(Convert.ToInt32(st[2]), Convert.ToInt32(st[1]), Convert.ToInt32(st[0]), 0, 0, 0);
+            long epoch = (d.Ticks - 621355968000000000) / 10000000;
+            return Convert.ToString(epoch);
+        }
+        private string conv(string timestamp)
+        {
+            long time = long.Parse(timestamp);
+            System.DateTime dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+            dateTime = dateTime.AddSeconds(time);
+            return dateTime.Day.ToString() + "/" + dateTime.Month.ToString() + "/" + dateTime.Year.ToString();
+        }
+        
     }
 }

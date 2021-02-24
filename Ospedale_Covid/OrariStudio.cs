@@ -99,11 +99,13 @@ namespace Ospedale_Covid
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+
             if (controllaSovrapposizioneTurni())
             {
+                
                 try
                 {
-
                     string comando = string.Format("INSERT INTO turni VALUES (\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\")", db.generateID(), db.getData(string.Format("SELECT idoperatoreCovid FROM operatoreCovid WHERE idPersonale = '{0}'", idPersonale)), dateTimePicker3.Text, dateTimePicker1.Text, dateTimePicker2.Text);
                     db.esegui(comando);
                     db.DataSource("turni", dataGridView3);
@@ -115,6 +117,21 @@ namespace Ospedale_Covid
                 }
             }
             
+        }
+
+        public bool controllaOreTurni()
+        {
+            DateTime dateTime1 = Convert.ToDateTime(string.Format("{0} {1}", dateTimePicker3.Text, dateTimePicker1.Text));
+            DateTime dateTime2 = Convert.ToDateTime(string.Format("{0} {1}", dateTimePicker3.Text, dateTimePicker2.Text));
+
+            string comando1 = string.Format("SELECT giornoInizio FROM orariStrutture WHERE idStruttura = '{0}'", comboBox4.Text);
+            string comando2 = string.Format("SELECT giornoFine FROM orariStrutture WHERE idStruttura = '{0}'", comboBox4.Text);
+
+            string giornoInizio = db.getData(comando1);
+            string giornoFine = db.getData(comando2);
+
+
+            return false;
         }
 
         private void button2_Click(object sender, EventArgs e)
