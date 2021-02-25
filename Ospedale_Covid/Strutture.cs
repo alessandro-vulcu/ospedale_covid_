@@ -17,6 +17,7 @@ namespace Ospedale_Covid
     {
         Database db;
         int rowIndex;
+        string currentPK;
         public Strutture()
         {
             InitializeComponent();
@@ -116,6 +117,67 @@ namespace Ospedale_Covid
         {
             InformazioniStruttura informazioniStruttura = new InformazioniStruttura(dataGridView1.Rows[this.rowIndex].Cells[0].Value.ToString());
             informazioniStruttura.ShowDialog();
+        }
+
+        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            button1.Enabled = false;
+            button2.Enabled = true;
+
+            currentPK = Convert.ToString(db.getData(string.Format(@"SELECT idStruttura FROM strutture WHERE idStruttura = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            comboRes.Text = Convert.ToString(db.getData(string.Format(@"SELECT idResponsabile FROM strutture WHERE idStruttura = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtNome.Text = Convert.ToString(db.getData(string.Format(@"SELECT nome FROM strutture WHERE idStruttura = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtIndirizzo.Text = Convert.ToString(db.getData(string.Format(@"SELECT indirizzo FROM strutture WHERE idStruttura = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtMail.Text = Convert.ToString(db.getData(string.Format(@"SELECT mail FROM strutture WHERE idStruttura = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtTelefono.Text = Convert.ToString(db.getData(string.Format(@"SELECT telefono FROM strutture WHERE idStruttura = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            txtMax.Value = db.getDataInt(string.Format(@"SELECT quantitaVaccini FROM strutture WHERE idStruttura = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString()));
+            txtDisponibilità.Value = db.getDataInt(string.Format(@"SELECT massimo FROM strutture WHERE idStruttura = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString()));
+            txtSomministrazioni.Value = db.getDataInt(string.Format(@"SELECT quantitaSomministrazioni FROM strutture WHERE idStruttura = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString()));
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!db.CheckTextBox(panel1))
+            {
+                try
+                {
+                    string comando1 = string.Format("UPDATE strutture SET idStruttura = \"{0}\", idResponsabile = \"{1}\", nome = \"{2}\", indirizzo = \"{3}\", mail = \"{4}\", telefono = \"{5}\", quantitaVaccini = \"{6}\", massimo = \"{7}\", quantitaSomministrazioni = \"{8}\" WHERE idStruttura = \"{9}\"", currentPK, comboRes.Text, txtNome.Text, txtIndirizzo.Text, txtMail.Text, txtTelefono.Text, txtMax.Text, txtDisponibilità.Value, txtSomministrazioni.Value,currentPK);
+                    db.esegui(comando1);
+                    foreach (Control txt in panel1.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
+                    {
+                        if (txt is TextBox)
+                        {
+                            txt.Text = "";
+                        }
+                        if(txt is NumericUpDown)
+                        {
+                            txt.Text = "0";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                db.DataSource("strutture", dataGridView1);
+                button1.Enabled = true;
+                button2.Enabled = false;
+                currentPK = "";
+            }
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Trim() != "")
+            {
+                string comandosql = string.Format(@"SELECT * FROM {0} WHERE {1} LIKE '{2}' COLLATE NOCASE", "strutture", comboBox1.Text, textBox1.Text);
+                db.aggiungi(comandosql, dataGridView1);
+            }
+            else
+            {
+                db.DataSource("strutture", dataGridView1);
+            }
         }
     }
 }

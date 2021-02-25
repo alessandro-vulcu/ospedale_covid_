@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accertamento telefonico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accertamento telefonico.Designer.cs">
+      <DependentUpon>Accertamento telefonico.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComboboxItem.cs" />
     <Compile Include="Conferma Vaccino.cs">
       <SubType>Form</SubType>
@@ -152,6 +158,9 @@
     <Compile Include="Vaccini.Designer.cs">
       <DependentUpon>Vaccini.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Accertamento telefonico.resx">
+      <DependentUpon>Accertamento telefonico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Conferma Vaccino.resx">
       <DependentUpon>Conferma Vaccino.cs</DependentUpon>
     </EmbeddedResource>

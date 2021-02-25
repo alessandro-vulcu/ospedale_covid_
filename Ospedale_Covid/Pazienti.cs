@@ -78,6 +78,10 @@ namespace Ospedale_Covid
                 string comandosql = string.Format(@"SELECT * FROM {0} WHERE {1} LIKE '{2}' COLLATE NOCASE", qualeDatabase,comboBox1.Text, textBox1.Text);
                 db.aggiungi(comandosql, dataGridView1);
             }
+            else
+            {
+                db.DataSource("pazienti", dataGridView1);
+            }
         }
 
         private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -159,6 +163,8 @@ namespace Ospedale_Covid
             {
                 db.dropRow("pazienti", dataGridView1.Rows[this.rowIndex].Cells[4].Value.ToString(), "codiceFiscale");
                 db.DataSource("pazienti", dataGridView1);
+                button1.Enabled = true;
+                button2.Enabled = false;
             }
 
         }

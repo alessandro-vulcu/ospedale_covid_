@@ -188,5 +188,13 @@ namespace Ospedale_Covid
             iconPictureBox1.IconChar = iconButton4.IconChar;
             label1.Text = iconButton4.Text;
         }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color7);
+            OpenChildForm(new Accertamento_telefonico());
+            iconPictureBox1.IconChar = iconButton5.IconChar;
+            label1.Text = iconButton5.Text;
+        }
     }
 }

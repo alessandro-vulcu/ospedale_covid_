@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using FontAwesome.Sharp;
+using Ospedale_Covid.Gestionale;
 
 namespace Ospedale_Covid
 {
@@ -281,20 +282,44 @@ namespace Ospedale_Covid
             var dct = app1.Zip(app2, (k, v) => new { Key = k, Value = v }).ToDictionary(x => x.Key, x => x.Value);
             return dct;
         }
-        public string converter(string str)
+        public long converter(DateTime d)
         {
-            string[] st = str.Split('/');
-            DateTime d = new DateTime(Convert.ToInt32(st[2]), Convert.ToInt32(st[1]), Convert.ToInt32(st[0]), 0, 0, 0);
             long epoch = (d.Ticks - 621355968000000000) / 10000000;
-            return Convert.ToString(epoch);
+            return epoch;
         }
-        private string conv(string timestamp)
+        private string conv(long time)
         {
-            long time = long.Parse(timestamp);
-            System.DateTime dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
             dateTime = dateTime.AddSeconds(time);
             return dateTime.Day.ToString() + "/" + dateTime.Month.ToString() + "/" + dateTime.Year.ToString();
         }
-        
+        public long convertiInMillisecondi(string ora)
+        {
+            string[] str = ora.Split(':');
+            long ms = (Convert.ToInt32(str[0]) * 3600000) + (Convert.ToInt32(str[0]) * 60000);
+            return ms;
+        }
+
+        public void fillCombo(string comandosql, ComboBox qualecombo, string nomeDaVisualizzare, string nomeID)
+        {
+            qualecombo.DisplayMember = "Text";
+            qualecombo.ValueMember = "Value";
+            using (SQLiteConnection connessione = new SQLiteConnection(@"Data Source=ospedale_covidDB.db; foreign keys=True"))
+            {
+                connessione.Open();
+                using (SQLiteCommand comando = new SQLiteCommand(comandosql, connessione))
+                {
+                    SQLiteDataReader dr = comando.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        qualecombo.Items.Add(new ComboboxItem(dr[nomeDaVisualizzare].ToString(), dr[nomeID].ToString()));
+                    }
+                    dr.Close();
+                }
+                connessione.Close();
+            }
+        }
+
+
     }
 }

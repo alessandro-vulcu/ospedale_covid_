@@ -97,6 +97,17 @@ namespace Ospedale_Covid
             
         }
 
+        public void aggiungiOre()
+        {
+            DateTime dm1 = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, dateTimePicker1.Value.Day, dateTimePicker1.Value.Hour, dateTimePicker1.Value.Minute, dateTimePicker1.Value.Second);
+            DateTime dm2 = new DateTime(dateTimePicker2.Value.Year, dateTimePicker2.Value.Month, dateTimePicker2.Value.Day, dateTimePicker2.Value.Hour, dateTimePicker2.Value.Minute, dateTimePicker2.Value.Second);
+
+            TimeSpan diff = dm2.Subtract(dm1);
+
+            string addOre = string.Format("INSERT INTO ore VALUES('{0}', '{1}','{2}','{3}')", db.generateID(), db.getData(string.Format("SELECT idoperatoreCovid FROM operatoreCovid WHERE idPersonale = '{0}'", idPersonale)), dateTimePicker3.Text, diff.TotalHours);
+            db.esegui(addOre);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -106,7 +117,8 @@ namespace Ospedale_Covid
                 
                 try
                 {
-                    string comando = string.Format("INSERT INTO turni VALUES (\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\")", db.generateID(), db.getData(string.Format("SELECT idoperatoreCovid FROM operatoreCovid WHERE idPersonale = '{0}'", idPersonale)), dateTimePicker3.Text, dateTimePicker1.Text, dateTimePicker2.Text);
+                    aggiungiOre();
+                    string comando = string.Format("INSERT INTO turni VALUES (\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\")", db.generateID(), db.getData(string.Format("SELECT idoperatoreCovid FROM operatoreCovid WHERE idPersonale = '{0}'", idPersonale)), comboBox4.Text, dateTimePicker3.Text, dateTimePicker1.Text, dateTimePicker2.Text);
                     db.esegui(comando);
                     db.DataSource("turni", dataGridView3);
                     writeInLabel();

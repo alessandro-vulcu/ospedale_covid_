@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtRegione = new System.Windows.Forms.ComboBox();
+            this.txtProvincia = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.txtData = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
@@ -47,6 +49,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtStato = new System.Windows.Forms.TextBox();
             this.txtCAP = new System.Windows.Forms.TextBox();
             this.txtVia = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -61,9 +64,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.espandiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtProvincia = new System.Windows.Forms.ComboBox();
-            this.txtRegione = new System.Windows.Forms.ComboBox();
-            this.txtStato = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -127,6 +127,158 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(297, 545);
             this.panel1.TabIndex = 1;
+            // 
+            // txtRegione
+            // 
+            this.txtRegione.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtRegione.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegione.FormattingEnabled = true;
+            this.txtRegione.Items.AddRange(new object[] {
+            "Abruzzo",
+            "Basilicata",
+            "Calabria",
+            "Campania",
+            "Emilia Romagna",
+            "Friuli Venezia Giulia",
+            "Lazio",
+            "Liguria",
+            "Lombardia",
+            "Marche",
+            "Molise",
+            "Piemonte",
+            "Puglia",
+            "Sardegna",
+            "Sicilia",
+            "Toscana",
+            "Trentino Alto Adige",
+            "Umbria",
+            "Valle d\'Aosta",
+            "Veneto"});
+            this.txtRegione.Location = new System.Drawing.Point(30, 659);
+            this.txtRegione.Name = "txtRegione";
+            this.txtRegione.Size = new System.Drawing.Size(199, 29);
+            this.txtRegione.TabIndex = 14;
+            // 
+            // txtProvincia
+            // 
+            this.txtProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtProvincia.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProvincia.FormattingEnabled = true;
+            this.txtProvincia.Items.AddRange(new object[] {
+            "Agrigento",
+            "Alessandria",
+            "Ancona",
+            "Aosta",
+            "Arezzo",
+            "Ascoli Piceno",
+            "Asti",
+            "Avellino",
+            "Bari",
+            "Barletta-Andria-Trani",
+            "Belluno",
+            "Benevento",
+            "Bergamo",
+            "Biella",
+            "Bologna",
+            "Bolzano",
+            "Brescia",
+            "Brindisi",
+            "Cagliari",
+            "Caltanissetta",
+            "Campobasso",
+            "Carbonia-Iglesias",
+            "Caserta",
+            "Catania",
+            "Catanzaro",
+            "Chieti",
+            "Como",
+            "Cosenza",
+            "Cremona",
+            "Crotone",
+            "Cuneo",
+            "Enna",
+            "Fermo",
+            "Ferrara",
+            "Firenze",
+            "Foggia",
+            "Forlì-Cesena",
+            "Frosinone",
+            "Genova",
+            "Gorizia",
+            "Grosseto",
+            "Imperia",
+            "Isernia",
+            "La Spezia",
+            "L\'Aquila",
+            "Latina",
+            "Lecce",
+            "Lecco",
+            "Livorno",
+            "Lodi",
+            "Lucca",
+            "Macerata",
+            "Mantova",
+            "Massa-Carrara",
+            "Matera",
+            "Messina",
+            "Milano",
+            "Modena",
+            "Monza e della Brianza",
+            "Napoli",
+            "Novara",
+            "Nuoro",
+            "Olbia-Tempio",
+            "Oristano",
+            "Padova",
+            "Palermo",
+            "Parma",
+            "Pavia",
+            "Perugia",
+            "Pesaro e Urbino",
+            "Pescara",
+            "Piacenza",
+            "Pisa",
+            "Pistoia",
+            "Pordenone",
+            "Potenza",
+            "Prato",
+            "Ragusa",
+            "Ravenna",
+            "Reggio Calabria",
+            "Reggio Emilia",
+            "Rieti",
+            "Rimini",
+            "Roma",
+            "Rovigo",
+            "Salerno",
+            "Medio Campidano",
+            "Sassari",
+            "Savona",
+            "Siena",
+            "Siracusa",
+            "Sondrio",
+            "Taranto",
+            "Teramo",
+            "Terni",
+            "Torino",
+            "Ogliastra",
+            "Trapani",
+            "Trento",
+            "Treviso",
+            "Trieste",
+            "Udine",
+            "Varese",
+            "Venezia",
+            "Verbano-Cusio-Ossola",
+            "Vercelli",
+            "Verona",
+            "Vibo Valentia",
+            "Vicenza",
+            "Viterbo"});
+            this.txtProvincia.Location = new System.Drawing.Point(30, 603);
+            this.txtProvincia.Name = "txtProvincia";
+            this.txtProvincia.Size = new System.Drawing.Size(199, 29);
+            this.txtProvincia.TabIndex = 14;
             // 
             // button2
             // 
@@ -308,6 +460,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Nome";
             // 
+            // txtStato
+            // 
+            this.txtStato.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStato.Location = new System.Drawing.Point(30, 718);
+            this.txtStato.Name = "txtStato";
+            this.txtStato.Size = new System.Drawing.Size(199, 28);
+            this.txtStato.TabIndex = 8;
+            // 
             // txtCAP
             // 
             this.txtCAP.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -440,166 +600,6 @@
             this.espandiToolStripMenuItem.Size = new System.Drawing.Size(130, 24);
             this.espandiToolStripMenuItem.Text = "Espandi";
             this.espandiToolStripMenuItem.Click += new System.EventHandler(this.espandiToolStripMenuItem_Click);
-            // 
-            // txtProvincia
-            // 
-            this.txtProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtProvincia.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProvincia.FormattingEnabled = true;
-            this.txtProvincia.Items.AddRange(new object[] {
-            "Agrigento",
-            "Alessandria",
-            "Ancona",
-            "Aosta",
-            "Arezzo",
-            "Ascoli Piceno",
-            "Asti",
-            "Avellino",
-            "Bari",
-            "Barletta-Andria-Trani",
-            "Belluno",
-            "Benevento",
-            "Bergamo",
-            "Biella",
-            "Bologna",
-            "Bolzano",
-            "Brescia",
-            "Brindisi",
-            "Cagliari",
-            "Caltanissetta",
-            "Campobasso",
-            "Carbonia-Iglesias",
-            "Caserta",
-            "Catania",
-            "Catanzaro",
-            "Chieti",
-            "Como",
-            "Cosenza",
-            "Cremona",
-            "Crotone",
-            "Cuneo",
-            "Enna",
-            "Fermo",
-            "Ferrara",
-            "Firenze",
-            "Foggia",
-            "Forlì-Cesena",
-            "Frosinone",
-            "Genova",
-            "Gorizia",
-            "Grosseto",
-            "Imperia",
-            "Isernia",
-            "La Spezia",
-            "L\'Aquila",
-            "Latina",
-            "Lecce",
-            "Lecco",
-            "Livorno",
-            "Lodi",
-            "Lucca",
-            "Macerata",
-            "Mantova",
-            "Massa-Carrara",
-            "Matera",
-            "Messina",
-            "Milano",
-            "Modena",
-            "Monza e della Brianza",
-            "Napoli",
-            "Novara",
-            "Nuoro",
-            "Olbia-Tempio",
-            "Oristano",
-            "Padova",
-            "Palermo",
-            "Parma",
-            "Pavia",
-            "Perugia",
-            "Pesaro e Urbino",
-            "Pescara",
-            "Piacenza",
-            "Pisa",
-            "Pistoia",
-            "Pordenone",
-            "Potenza",
-            "Prato",
-            "Ragusa",
-            "Ravenna",
-            "Reggio Calabria",
-            "Reggio Emilia",
-            "Rieti",
-            "Rimini",
-            "Roma",
-            "Rovigo",
-            "Salerno",
-            "Medio Campidano",
-            "Sassari",
-            "Savona",
-            "Siena",
-            "Siracusa",
-            "Sondrio",
-            "Taranto",
-            "Teramo",
-            "Terni",
-            "Torino",
-            "Ogliastra",
-            "Trapani",
-            "Trento",
-            "Treviso",
-            "Trieste",
-            "Udine",
-            "Varese",
-            "Venezia",
-            "Verbano-Cusio-Ossola",
-            "Vercelli",
-            "Verona",
-            "Vibo Valentia",
-            "Vicenza",
-            "Viterbo"});
-            this.txtProvincia.Location = new System.Drawing.Point(30, 603);
-            this.txtProvincia.Name = "txtProvincia";
-            this.txtProvincia.Size = new System.Drawing.Size(199, 29);
-            this.txtProvincia.TabIndex = 14;
-            // 
-            // txtRegione
-            // 
-            this.txtRegione.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtRegione.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegione.FormattingEnabled = true;
-            this.txtRegione.Items.AddRange(new object[] {
-            "Abruzzo",
-            "Basilicata",
-            "Calabria",
-            "Campania",
-            "Emilia Romagna",
-            "Friuli Venezia Giulia",
-            "Lazio",
-            "Liguria",
-            "Lombardia",
-            "Marche",
-            "Molise",
-            "Piemonte",
-            "Puglia",
-            "Sardegna",
-            "Sicilia",
-            "Toscana",
-            "Trentino Alto Adige",
-            "Umbria",
-            "Valle d\'Aosta",
-            "Veneto"});
-            this.txtRegione.Location = new System.Drawing.Point(30, 659);
-            this.txtRegione.Name = "txtRegione";
-            this.txtRegione.Size = new System.Drawing.Size(199, 29);
-            this.txtRegione.TabIndex = 14;
-            // 
-            // txtStato
-            // 
-            this.txtStato.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStato.Location = new System.Drawing.Point(30, 718);
-            this.txtStato.Name = "txtStato";
-            this.txtStato.Size = new System.Drawing.Size(199, 28);
-            this.txtStato.TabIndex = 8;
             // 
             // Pazienti
             // 

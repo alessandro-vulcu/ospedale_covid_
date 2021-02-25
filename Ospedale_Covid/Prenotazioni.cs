@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace Ospedale_Covid
         Database db;
         
         int rowIndex;
+        string currentPK;
         public Prenotazioni()
         {
             InitializeComponent();
@@ -84,6 +86,10 @@ namespace Ospedale_Covid
                 string comandosql = string.Format(@"SELECT * FROM {0} WHERE {1} LIKE '{2}' COLLATE NOCASE", "Prenotazioni", comboBox1.Text, textBox2.Text);
                 db.aggiungi(comandosql, dataGridView1);
             }
+            else
+            {
+                db.DataSource("Prenotazioni", dataGridView1);
+            }
         }
 
         private void confermaVaccinazioneToolStripMenuItem_Click(object sender, EventArgs e)
@@ -107,6 +113,58 @@ namespace Ospedale_Covid
                 this.contextMenuStrip1.Show(this.dataGridView1, e.Location);
                 contextMenuStrip1.Show(Cursor.Position);
             }
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void eliminaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!this.dataGridView1.Rows[this.rowIndex].IsNewRow)
+            {
+                db.esegui(string.Format("DELETE FROM Prenotazioni WHERE idPrenotazione = '{0}'", dataGridView1.Rows[this.rowIndex].Cells[0].Value.ToString()));
+                db.DataSource("Prenotazioni", dataGridView1);
+            }
+        }
+
+        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            button1.Enabled = false;
+            button2.Enabled = true;
+
+            currentPK = Convert.ToString(db.getData(string.Format(@"SELECT idPrenotazione FROM Prenotazioni WHERE idPrenotazione = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            comboBox2.Text = Convert.ToString(db.getData(string.Format(@"SELECT idPaziente FROM Prenotazioni WHERE idPrenotazione = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            comboBox3.Text = Convert.ToString(db.getData(string.Format(@"SELECT idStruttura FROM Prenotazioni WHERE idPrenotazione = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            dateTimePicker1.Value = DateTime.ParseExact(db.getData(string.Format(@"SELECT giorno FROM Prenotazioni WHERE idPrenotazione = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            dateTimePicker2.Value = DateTime.ParseExact(db.getData(string.Format(@"SELECT ora FROM Prenotazioni WHERE idPrenotazione = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())), "HH:mm", CultureInfo.InvariantCulture);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!db.CheckTextBox(panel1))
+            {
+                try
+                {
+                    string comando1 = string.Format("UPDATE Prenotazioni SET idPaziente = \"{0}\", idStruttura = \"{1}\", giorno = \"{2}\", ora = \"{3}\", oraFine = \"{4}\"", comboBox2.Text, comboBox3.Text, dateTimePicker1.Text, dateTimePicker2.Value.ToString("HH:mm"), oraFine());
+                    db.esegui(comando1);
+                    foreach (Control txt in panel1.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
+                    {
+                        if (txt is TextBox)
+                        {
+                            txt.Text = "";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            db.DataSource("Prenotazioni", dataGridView1);
+            button2.Enabled = false;
+            button1.Enabled = true;
         }
     }
 }

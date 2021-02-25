@@ -29,3 +29,4 @@ C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Deb
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Spedizione.resources
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Prenotazioni.resources
 C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Conferma_Vaccino.resources
+C:\Users\alexv\Google Drive\SCUOLA-4AI\C#\ospedale_covid_\Ospedale_Covid\obj\Debug\Ospedale_Covid.Accertamento_telefonico.resources

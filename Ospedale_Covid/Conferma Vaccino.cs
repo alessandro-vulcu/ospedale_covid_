@@ -29,6 +29,8 @@ namespace Ospedale_Covid
             this.idStruttura = idStruttura;
             this.idPrenotazione = idPrenotazione;
             this.dgw = dgw;
+
+            sbloccaDateTime();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,6 +39,11 @@ namespace Ospedale_Covid
             {
                 try
                 {
+                    if(checkBox1.Checked == true)
+                    {
+                        string comando1 = string.Format("INSERT INTO Prenotazioni VALUES('{0}', '{1}','{2}','{3}','{4}','{5}')", db.generateID(), idPaziente, idStruttura, dateTimePicker2.Text, dateTimePicker3.Value.ToString("HH:mm"), dateTimePicker4.Value.ToString("HH:mm"));
+                        db.esegui(comando1);
+                    }
                     ComboboxItem c = (ComboboxItem)comboBox1.SelectedItem;
                     string idv = c.Value.ToString();
 
@@ -54,6 +61,7 @@ namespace Ospedale_Covid
             }
             
         }
+
         public bool toglidosevaccino()
         {
             if(db.getDataInt(string.Format("SELECT quantitaVaccini FROM strutture WHERE idStruttura = '{0}'", idStruttura)) != 0)
@@ -75,7 +83,7 @@ namespace Ospedale_Covid
             db.esegui(comando);
         }
 
-        private void fillCombo(string comandosql, ComboBox qualecombo, string nomeDaVisualizzare, string nomeID)
+        public void fillCombo(string comandosql, ComboBox qualecombo, string nomeDaVisualizzare, string nomeID)
         {
             
             comboBox1.DisplayMember = "Text";
@@ -99,6 +107,27 @@ namespace Ospedale_Covid
         private void Conferma_Vaccino_FormClosing(object sender, FormClosingEventArgs e)
         {
             db.DataSource("Prenotazioni", dgw);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            sbloccaDateTime();
+        }
+        public void sbloccaDateTime()
+        {
+            if (checkBox1.Checked == true)
+            {
+                dateTimePicker2.Enabled = true;
+                dateTimePicker3.Enabled = true;
+                dateTimePicker4.Enabled = true;
+            }
+            else
+            {
+                dateTimePicker2.Enabled = false;
+                dateTimePicker3.Enabled = false;
+                dateTimePicker4.Enabled = false;
+
+            }
         }
     }
 }

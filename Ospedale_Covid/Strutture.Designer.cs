@@ -34,11 +34,15 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSomministrazioni = new System.Windows.Forms.NumericUpDown();
+            this.txtDisponibilità = new System.Windows.Forms.NumericUpDown();
             this.comboRes = new System.Windows.Forms.ComboBox();
+            this.txtMax = new System.Windows.Forms.NumericUpDown();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,17 +56,13 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.espandiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtMax = new System.Windows.Forms.NumericUpDown();
-            this.txtDisponibilità = new System.Windows.Forms.NumericUpDown();
-            this.txtSomministrazioni = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSomministrazioni)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDisponibilità)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMax)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDisponibilità)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSomministrazioni)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -106,6 +106,7 @@
             this.iconButton1.Size = new System.Drawing.Size(67, 29);
             this.iconButton1.TabIndex = 1;
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // textBox1
             // 
@@ -146,6 +147,20 @@
             this.panel1.Size = new System.Drawing.Size(297, 545);
             this.panel1.TabIndex = 7;
             // 
+            // txtSomministrazioni
+            // 
+            this.txtSomministrazioni.Location = new System.Drawing.Point(47, 410);
+            this.txtSomministrazioni.Name = "txtSomministrazioni";
+            this.txtSomministrazioni.Size = new System.Drawing.Size(199, 28);
+            this.txtSomministrazioni.TabIndex = 8;
+            // 
+            // txtDisponibilità
+            // 
+            this.txtDisponibilità.Location = new System.Drawing.Point(152, 355);
+            this.txtDisponibilità.Name = "txtDisponibilità";
+            this.txtDisponibilità.Size = new System.Drawing.Size(94, 28);
+            this.txtDisponibilità.TabIndex = 7;
+            // 
             // comboRes
             // 
             this.comboRes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -155,7 +170,14 @@
             this.comboRes.Location = new System.Drawing.Point(47, 33);
             this.comboRes.Name = "comboRes";
             this.comboRes.Size = new System.Drawing.Size(199, 29);
-            this.comboRes.TabIndex = 9;
+            this.comboRes.TabIndex = 1;
+            // 
+            // txtMax
+            // 
+            this.txtMax.Location = new System.Drawing.Point(47, 355);
+            this.txtMax.Name = "txtMax";
+            this.txtMax.Size = new System.Drawing.Size(94, 28);
+            this.txtMax.TabIndex = 6;
             // 
             // button2
             // 
@@ -169,9 +191,10 @@
             this.button2.Location = new System.Drawing.Point(47, 491);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(199, 38);
-            this.button2.TabIndex = 13;
+            this.button2.TabIndex = 10;
             this.button2.Text = "Aggiorna";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -185,7 +208,7 @@
             this.button1.Location = new System.Drawing.Point(47, 449);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(199, 38);
-            this.button1.TabIndex = 12;
+            this.button1.TabIndex = 9;
             this.button1.Text = "Aggiungi";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -209,7 +232,18 @@
             this.txtTelefono.Location = new System.Drawing.Point(47, 294);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(199, 28);
-            this.txtTelefono.TabIndex = 4;
+            this.txtTelefono.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(184)))), ((int)(((byte)(204)))));
+            this.label4.Location = new System.Drawing.Point(46, 386);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(212, 21);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Somministrazioni giornaliere";
             // 
             // label2
             // 
@@ -285,7 +319,7 @@
             this.txtMail.Location = new System.Drawing.Point(47, 225);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(199, 28);
-            this.txtMail.TabIndex = 2;
+            this.txtMail.TabIndex = 4;
             // 
             // txtIndirizzo
             // 
@@ -295,7 +329,7 @@
             this.txtIndirizzo.Location = new System.Drawing.Point(47, 157);
             this.txtIndirizzo.Name = "txtIndirizzo";
             this.txtIndirizzo.Size = new System.Drawing.Size(199, 28);
-            this.txtIndirizzo.TabIndex = 2;
+            this.txtIndirizzo.TabIndex = 3;
             // 
             // txtNome
             // 
@@ -305,7 +339,7 @@
             this.txtNome.Location = new System.Drawing.Point(47, 92);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(199, 28);
-            this.txtNome.TabIndex = 1;
+            this.txtNome.TabIndex = 2;
             // 
             // dataGridView1
             // 
@@ -325,6 +359,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(659, 476);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
+            this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -349,38 +384,6 @@
             this.espandiToolStripMenuItem.Text = "Espandi";
             this.espandiToolStripMenuItem.Click += new System.EventHandler(this.espandiToolStripMenuItem_Click);
             // 
-            // txtMax
-            // 
-            this.txtMax.Location = new System.Drawing.Point(47, 355);
-            this.txtMax.Name = "txtMax";
-            this.txtMax.Size = new System.Drawing.Size(94, 28);
-            this.txtMax.TabIndex = 9;
-            // 
-            // txtDisponibilità
-            // 
-            this.txtDisponibilità.Location = new System.Drawing.Point(152, 355);
-            this.txtDisponibilità.Name = "txtDisponibilità";
-            this.txtDisponibilità.Size = new System.Drawing.Size(94, 28);
-            this.txtDisponibilità.TabIndex = 9;
-            // 
-            // txtSomministrazioni
-            // 
-            this.txtSomministrazioni.Location = new System.Drawing.Point(47, 410);
-            this.txtSomministrazioni.Name = "txtSomministrazioni";
-            this.txtSomministrazioni.Size = new System.Drawing.Size(199, 28);
-            this.txtSomministrazioni.TabIndex = 14;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(184)))), ((int)(((byte)(204)))));
-            this.label4.Location = new System.Drawing.Point(46, 386);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(212, 21);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Somministrazioni giornaliere";
-            // 
             // Strutture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -401,11 +404,11 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSomministrazioni)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDisponibilità)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtMax)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDisponibilità)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSomministrazioni)).EndInit();
             this.ResumeLayout(false);
 
         }

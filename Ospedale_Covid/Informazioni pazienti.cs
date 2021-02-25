@@ -26,10 +26,8 @@ namespace Ospedale_Covid
         private void Informazioni_pazienti_Load(object sender, EventArgs e)
         {
             selectResidenza();
-            //db.diventaDictionary("vaccinazioni", "idVaccino", "malattiaCurata");
             scriviInLabel();
             fillComboVaccini();
-            //comboBox1.DataSource = db.daColonnaALista("vaccinazioni", "idVaccino");
             db.DataSourceComando(string.Format(@"SELECT * FROM pazientiVaccinazioni WHERE idPaziente = '{0}'", idPaziente), dataGridView1);
             
         }

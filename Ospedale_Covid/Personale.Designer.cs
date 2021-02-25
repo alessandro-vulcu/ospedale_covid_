@@ -54,7 +54,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.espandiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mostraOperatoriCovidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
@@ -330,32 +329,24 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eliminaToolStripMenuItem,
-            this.espandiToolStripMenuItem,
-            this.mostraOperatoriCovidToolStripMenuItem});
+            this.espandiToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(233, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(131, 52);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // eliminaToolStripMenuItem
             // 
             this.eliminaToolStripMenuItem.Name = "eliminaToolStripMenuItem";
-            this.eliminaToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
+            this.eliminaToolStripMenuItem.Size = new System.Drawing.Size(130, 24);
             this.eliminaToolStripMenuItem.Text = "Elimina";
             this.eliminaToolStripMenuItem.Click += new System.EventHandler(this.eliminaToolStripMenuItem_Click);
             // 
             // espandiToolStripMenuItem
             // 
             this.espandiToolStripMenuItem.Name = "espandiToolStripMenuItem";
-            this.espandiToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
+            this.espandiToolStripMenuItem.Size = new System.Drawing.Size(130, 24);
             this.espandiToolStripMenuItem.Text = "Espandi";
             this.espandiToolStripMenuItem.Click += new System.EventHandler(this.espandiToolStripMenuItem_Click);
-            // 
-            // mostraOperatoriCovidToolStripMenuItem
-            // 
-            this.mostraOperatoriCovidToolStripMenuItem.Name = "mostraOperatoriCovidToolStripMenuItem";
-            this.mostraOperatoriCovidToolStripMenuItem.Size = new System.Drawing.Size(232, 24);
-            this.mostraOperatoriCovidToolStripMenuItem.Text = "Mostra operatori Covid";
-            this.mostraOperatoriCovidToolStripMenuItem.Click += new System.EventHandler(this.mostraOperatoriCovidToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -464,6 +455,5 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolStripMenuItem eliminaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem espandiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mostraOperatoriCovidToolStripMenuItem;
     }
 }

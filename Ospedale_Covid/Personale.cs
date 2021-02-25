@@ -119,6 +119,10 @@ namespace Ospedale_Covid
                 string comandosql = string.Format(@"SELECT * FROM {0} WHERE {1} LIKE '{2}' COLLATE NOCASE", "personale", comboBox1.Text, txtSpec.Text);
                 db.aggiungi(comandosql, dataGridView1);
             }
+            else
+            {
+                db.DataSource("personale", dataGridView1);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -195,6 +199,8 @@ namespace Ospedale_Covid
             {
                 db.esegui(string.Format("DELETE FROM personale WHERE idPersonale = '{0}'", dataGridView1.Rows[this.rowIndex].Cells[0].Value.ToString()));
                 db.DataSource("personale", dataGridView1);
+                button1.Enabled = true;
+                button2.Enabled = false;
             }
         }
 
