@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Ospedale_Covid
     {
         Database db;
         string idPersonale;
+        string currentPK;
+        string idoperatoreCovid;
         
         int rowIndex;
         public InormazioniMedico(string idPersonale, string nome, string cognome)
@@ -25,14 +28,31 @@ namespace Ospedale_Covid
             comboBox4.DataSource = db.daColonnaALista("strutture", "idStruttura");
             label5.Text = string.Format("Medico: {0} {1}", nome, cognome);
             db.DataSource("turni", dataGridView3);
+            db.DataSource("ore", dataGridView4);
             dateTimePicker1.ShowUpDown = true;
             dateTimePicker2.ShowUpDown = true;
+            qualeStudio();
+
+            button1.Enabled = true;
+            button2.Enabled = true;
+        }
+
+        public void qualeStudio()
+        {
+            string comando = string.Format("SELECT idStudio FROM studioPersonale WHERE idPersonale = '{0}'", idPersonale);
+            if(comando != null)
+            {
+                textBox4.Text = "Assegnato a studio " + db.getData(comando);
+            }
+            else
+            {
+                textBox4.Text = "Nessuno studio medico assegnato";
+            }
         }
 
         private void OrariStudio_Load(object sender, EventArgs e)
         {
             db.DataSourceWhere("orariPersonale", idPersonale, "idPersonale", dataGridView1);
-            //db.DataSourceWhere("mediciPaziente", idPersonale, "idPersonale", dataGridView2);
             joinTraTabelle();
             writeInLabel();
             bloccaMediciBase(selectTipo());
@@ -213,51 +233,29 @@ namespace Ospedale_Covid
             string id = db.getData(comando);
             if(id != null)
             {
-                checkBox1.Checked = true;
+                radioButton2.Checked = true;
                 comboBox4.Enabled = true;
-                button1.Enabled = true;
-                button2.Enabled = true;
+
                 groupBox1.Enabled = false;
                 groupBox2.Enabled = false;
+                groupBox3.Enabled = true;
+                groupBox4.Enabled = true;
             }
             else
             {
-                checkBox1.Checked = false;
+                radioButton1.Checked = true;
                 comboBox4.Enabled = false;
-                button1.Enabled = false;
-                button2.Enabled = false;
+                
                 groupBox1.Enabled = true;
                 groupBox2.Enabled = true;
+                groupBox3.Enabled = false;
+                groupBox4.Enabled = false;
             }
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox1.Checked == true)
-            {
-                try
-                {
-                    string comando = string.Format("INSERT INTO operatoreCovid VALUES('{0}', '{1}')", db.generateID(), idPersonale);
-                    db.esegui(comando);
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                
-            }
-            else
-            {
-                try
-                {
-                    string comando = string.Format("DELETE FROM operatoreCovid WHERE idPersonale = '{0}'", idPersonale);
-                    db.esegui(comando);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            controllaSeOperatoreCovid();
+            
+            
         }
 
         private void dataGridView3_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -290,6 +288,86 @@ namespace Ospedale_Covid
             }
             return true;
         }
-        
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView4_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            currentPK = Convert.ToString(db.getData(string.Format(@"SELECT idOre FROM ore WHERE idOre = '{0}'", dataGridView4.SelectedRows[0].Cells[0].Value.ToString())));
+            idoperatoreCovid = Convert.ToString(db.getData(string.Format(@"SELECT idoperatoreCovid FROM ore WHERE idOre = '{0}'", dataGridView4.SelectedRows[0].Cells[0].Value.ToString())));
+            dateTimePicker4.Value = DateTime.ParseExact(db.getData(string.Format(@"SELECT giorno FROM ore WHERE idOre = '{0}'", dataGridView4.SelectedRows[0].Cells[0].Value.ToString())), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            numericUpDown1.Value = db.getDataInt(string.Format(@"SELECT ora FROM ore WHERE idOre = '{0}'", dataGridView4.SelectedRows[0].Cells[0].Value.ToString()));
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    string comando1 = string.Format("UPDATE ore SET nome = \"{0}\", cognome = \"{1}\", luogoNascita = \"{2}\", datanascita = \"{3}\", telefono = \"{4}\", email = \"{5}\" WHERE codiceFiscale = \"{6}\"", txtNome.Text, txtCognome.Text, txtNascita.Text, txtData.Text, txtTelefono.Text, txtEmail.Text, txtCF.Text);
+            //    db.esegui(comando1);
+            //    foreach (Control txt in groupBox4.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
+            //    {
+            //        if (txt is TextBox)
+            //        {
+            //            txt.Text = "";
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //db.DataSource("pazienti", dataGridView1);
+            //button2.Enabled = false;
+            //button1.Enabled = true;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (radioButton2.Checked == true)
+            {
+                try
+                {
+                    string comando = string.Format("INSERT INTO operatoreCovid VALUES('{0}', '{1}')", db.generateID(), idPersonale);
+                    db.esegui(comando);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+            controllaSeOperatoreCovid();
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked == true)
+            {
+                try
+                {
+                    string comando = string.Format("DELETE FROM operatoreCovid WHERE idPersonale = '{0}'", idPersonale);
+                    db.esegui(comando);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            controllaSeOperatoreCovid();
+        }
+        public bool controllaMedicoDiBase()
+        {
+            if(db.getDataInt(string.Format("SELECT COUNT(idPaziente) FROM mediciPaziente WHERE idPersonale = '{0}'", idPersonale)) != 0)
+            {
+                MessageBox.Show("Il medico non può lavorare in una struttura perchè già impegnato come medico di base");
+                return false;
+            }
+            return true;
+        }
     }
 }

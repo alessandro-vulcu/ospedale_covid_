@@ -24,7 +24,8 @@ namespace Ospedale_Covid
         public void joinTraTabelle()
         {
             string comando = string.Format("SELECT nome, cognome, codiceFiscale, personale.idPersonale FROM personale INNER JOIN personaleStrutture ON personale.idPersonale = personaleStrutture.idPersonale WHERE idStruttura = '{0}'", idStruttura);
-            db.DataSourceComando(comando, dataGridView2);
+            string comando1 = string.Format("SELECT idOperatoreCovid, dataTurno, oraInizio, oraFine FROM turni WHERE idStruttura = '{0}'", idStruttura);
+            db.DataSourceComando(comando1, dataGridView2);
         }
         private void InformazioniStruttura_Load(object sender, EventArgs e)
         {
@@ -47,28 +48,28 @@ namespace Ospedale_Covid
 
         private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
+            {
+                this.dataGridView1.Rows[e.RowIndex].Selected = true;
+                this.rowIndex = e.RowIndex;
+                this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[1];
+                this.contextMenuStrip1.Show(this.dataGridView1, e.Location);
+                contextMenuStrip1.Show(Cursor.Position);
+            }
         }
 
         private void eliminaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!this.dataGridView2.Rows[this.rowIndex].IsNewRow)
+            if (!this.dataGridView1.Rows[this.rowIndex].IsNewRow)
             {
-                db.esegui(string.Format("DELETE FROM personaleStrutture WHERE idPersonale = '{0}' AND idStruttura = '{1}'", dataGridView2.Rows[this.rowIndex].Cells[3].Value.ToString(), idStruttura));
-                joinTraTabelle();
+                db.esegui(string.Format("DELETE FROM orariStrutture WHERE idOrarioStruttura = '{0}'", dataGridView1.Rows[this.rowIndex].Cells[0].Value.ToString()));
+                db.DataSource("orariStrutture", dataGridView1);
             }
         }
 
         private void dataGridView2_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
-            {
-                this.dataGridView2.Rows[e.RowIndex].Selected = true;
-                this.rowIndex = e.RowIndex;
-                this.dataGridView2.CurrentCell = this.dataGridView2.Rows[e.RowIndex].Cells[1];
-                this.contextMenuStrip1.Show(this.dataGridView2, e.Location);
-                contextMenuStrip1.Show(Cursor.Position);
-            }
+            
         }
     }
 }

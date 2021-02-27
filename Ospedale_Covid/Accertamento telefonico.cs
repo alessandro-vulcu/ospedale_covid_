@@ -72,33 +72,7 @@ namespace Ospedale_Covid
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!db.CheckTextBox(panel1))
-            {
-                try
-                {
-                    string comando1 = string.Format("UPDATE accertamentoTelefonico SET idAccertamento = \"{0}\", idPaziente = \"{1}\", idOperatore = \"{2}\", idVaccinoCovid = \"{3}\", dataAccertamento = \"{4}\", oraAccertamento = \"{5}\", sintomi = \"{6}\" WHERE idAccertamento = \"{9}\"", currentPK, comboBox2.Text, comboBox3.Text, comboBox5.Text, dateTimePicker1.Value, dateTimePicker2.Value.ToString("HH:mm"), comboBox4.Text, currentPK);
-                    db.esegui(comando1);
-                    foreach (Control txt in panel1.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
-                    {
-                        if (txt is TextBox)
-                        {
-                            txt.Text = "";
-                        }
-                        if (txt is NumericUpDown)
-                        {
-                            txt.Text = "0";
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                db.DataSource("strutture", dataGridView1);
-                button1.Enabled = true;
-                button2.Enabled = false;
-                currentPK = "";
-            }
+            
         }
 
         private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -121,7 +95,7 @@ namespace Ospedale_Covid
             currentPK = Convert.ToString(db.getData(string.Format(@"SELECT idAccertamento FROM accertamentoTelefonico WHERE idAccertamento = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
             comboBox2.Text = Convert.ToString(db.getData(string.Format(@"SELECT idPaziente FROM accertamentoTelefonico WHERE idAccertamento = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
             comboBox3.Text = Convert.ToString(db.getData(string.Format(@"SELECT idOperatore FROM accertamentoTelefonico WHERE idAccertamento = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
-            comboBox5.Text = Convert.ToString(db.getData(string.Format(@"SELECT idVaccinoCovid FROM accertamentoTelefonico WHERE idAccertamento = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
+            //comboBox5.Text = Convert.ToString(db.getData(string.Format(@"SELECT idVaccinoCovid FROM accertamentoTelefonico WHERE idAccertamento = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
             dateTimePicker1.Text = Convert.ToString(db.getData(string.Format(@"SELECT dataAccertamento FROM accertamentoTelefonico WHERE idAccertamento = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
             dateTimePicker2.Text = Convert.ToString(db.getData(string.Format(@"SELECT oraAccertamento FROM accertamentoTelefonico WHERE idAccertamento = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
             comboBox4.Text = Convert.ToString(db.getData(string.Format(@"SELECT sintomi FROM accertamentoTelefonico WHERE idAccertamento = '{0}'", dataGridView1.SelectedRows[0].Cells[0].Value.ToString())));
@@ -138,6 +112,12 @@ namespace Ospedale_Covid
                 button2.Enabled = false;
             }
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EffettiCollaterali effettiCollaterali = new EffettiCollaterali();
+            effettiCollaterali.ShowDialog();
         }
     }
 }

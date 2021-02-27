@@ -29,6 +29,7 @@ namespace Ospedale_Covid
         public Dashboard()
         {
             InitializeComponent();
+            comboBox1.DataSource = db.daColonnaALista("strutture", "idStruttura");
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -36,24 +37,31 @@ namespace Ospedale_Covid
             
         }
 
+        public void saturazioneStrutture()
+        {
+            string comando = string.Format("SELECT COUNT(idPrenotazione) FROM Prenotazioni WHERE giorno = '{0}' AND idStruttura = '{1}'", DateTime.Now.ToString("dd/MM/yyyy"), comboBox1.Text);
+            double n = db.getDataInt(comando);
+            double percentuale1 = (n / 200) * 100;
+            textBox5.Text = percentuale1+"% oggi";
+
+        }
+
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            string comando = string.Format("SELECT COUNT(idPrenotazione) FROM Prenotazioni WHERE giorno = '{0}'", DateTime.Now.ToString("dd/MM/yyyy"));
-            
-            
-            DateTime Giornosettimana1 = DateTime.Now.AddDays(-3);
-            DateTime Giornosettimana2 = DateTime.Now.AddDays(4);
-            string comando2 = string.Format("SELECT COUNT(idPrenotazione) FROM Prenotazioni WHERE giorno > '{0}' AND giorno < '{1}'", Giornosettimana1, Giornosettimana2);
-
-            DateTime date = DateTime.Today;
-            var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
-            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-
-            string comando3 = string.Format("SELECT COUNT(idPrenotazione) FROM Prenotazioni WHERE giorno > '{0}' AND giorno < '{1}'", firstDayOfMonth, lastDayOfMonth);
-
-            textBox1.Text = Convert.ToString(db.getDataInt(comando));
-            textBox2.Text = Convert.ToString(db.getDataInt(comando2));
-            textBox3.Text = Convert.ToString(db.getDataInt(comando3));
+            saturazioneStrutture();
+            vacciniEffettuati();
+            selezionaEffetticollateraliFrequenti();
+        }
+        public void vacciniEffettuati()
+        {
+            string comando = string.Format("SELECT COUNT(idVaccinoCovid) FROM pazientiVaccinati WHERE idStruttura = '{0}'", comboBox1.Text);
+            textBox1.Text = db.getDataInt(comando) + " dosi";
+        }
+        public void selezionaEffetticollateraliFrequenti()
+        {
+            string comando = string.Format("SELECT vacciniCovid.nomeVaccino, vacciniCovid.casaFarmaceutica, EffettiCollaterali.effetto_collaterale, EffettiCollaterali.quanti FROM EffettiCollaterali INNER JOIN vacciniCovid ON EffettiCollaterali.idVaccinoCovid = vacciniCovid.idVaccinoCovid ORDER BY quanti DESC");
+            db.DataSourceComando(comando, dataGridView1);
+            //dataGridView1.Sort(dataGridView1.Columns["quanti"], ListSortDirection.Ascending);
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -69,6 +77,13 @@ namespace Ospedale_Covid
         private void textBox3_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            saturazioneStrutture();
+            vacciniEffettuati();
+            selezionaEffetticollateraliFrequenti();
         }
     }
 }

@@ -215,5 +215,11 @@ namespace Ospedale_Covid
             string comando = string.Format(@"SELECT personale.idPersonale, personale.nome, personale.cognome FROM personale INNER JOIN operatoreCovid ON personale.idPersonale=operatoreCovid.idPersonale");
             db.DataSourceComando(comando, dataGridView1);
         }
+
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+            Studio studio = new Studio();
+            studio.ShowDialog();
+        }
     }
 }
