@@ -30,6 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelDesktop = new System.Windows.Forms.Panel();
+            this.lblgiorno = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -38,17 +45,10 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.btnPazienti = new FontAwesome.Sharp.IconButton();
-            this.panelDesktop = new System.Windows.Forms.Panel();
-            this.lblgiorno = new System.Windows.Forms.Label();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -68,6 +68,84 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(293, 766);
             this.panel1.TabIndex = 2;
+            // 
+            // panelDesktop
+            // 
+            this.panelDesktop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelDesktop.Location = new System.Drawing.Point(293, 100);
+            this.panelDesktop.Margin = new System.Windows.Forms.Padding(4);
+            this.panelDesktop.Name = "panelDesktop";
+            this.panelDesktop.Size = new System.Drawing.Size(1039, 666);
+            this.panelDesktop.TabIndex = 3;
+            // 
+            // lblgiorno
+            // 
+            this.lblgiorno.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblgiorno.AutoSize = true;
+            this.lblgiorno.Font = new System.Drawing.Font("Calibri Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblgiorno.ForeColor = System.Drawing.Color.White;
+            this.lblgiorno.Location = new System.Drawing.Point(882, 59);
+            this.lblgiorno.Name = "lblgiorno";
+            this.lblgiorno.Size = new System.Drawing.Size(105, 18);
+            this.lblgiorno.TabIndex = 3;
+            this.lblgiorno.Text = "sab 20 feb 2021";
+            this.lblgiorno.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Calibri Light", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.White;
+            this.lblTime.Location = new System.Drawing.Point(886, 18);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(137, 40);
+            this.lblTime.TabIndex = 2;
+            this.lblTime.Text = "00:00:00";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(37)))), ((int)(((byte)(47)))));
+            this.panel2.Controls.Add(this.lblgiorno);
+            this.panel2.Controls.Add(this.iconPictureBox1);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lblTime);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.ForeColor = System.Drawing.Color.White;
+            this.panel2.Location = new System.Drawing.Point(293, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1039, 100);
+            this.panel2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(91, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 29);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Home";
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(37)))), ((int)(((byte)(47)))));
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 44;
+            this.iconPictureBox1.Location = new System.Drawing.Point(41, 33);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(44, 44);
+            this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.iconPictureBox1.TabIndex = 1;
+            this.iconPictureBox1.TabStop = false;
             // 
             // iconButton5
             // 
@@ -228,84 +306,6 @@
             this.btnPazienti.UseVisualStyleBackColor = true;
             this.btnPazienti.Click += new System.EventHandler(this.btnPazienti_Click);
             // 
-            // panelDesktop
-            // 
-            this.panelDesktop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelDesktop.Location = new System.Drawing.Point(293, 100);
-            this.panelDesktop.Margin = new System.Windows.Forms.Padding(4);
-            this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1039, 666);
-            this.panelDesktop.TabIndex = 3;
-            // 
-            // lblgiorno
-            // 
-            this.lblgiorno.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblgiorno.AutoSize = true;
-            this.lblgiorno.Font = new System.Drawing.Font("Calibri Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblgiorno.ForeColor = System.Drawing.Color.White;
-            this.lblgiorno.Location = new System.Drawing.Point(882, 59);
-            this.lblgiorno.Name = "lblgiorno";
-            this.lblgiorno.Size = new System.Drawing.Size(105, 18);
-            this.lblgiorno.TabIndex = 3;
-            this.lblgiorno.Text = "sab 20 feb 2021";
-            this.lblgiorno.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblTime
-            // 
-            this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Calibri Light", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.ForeColor = System.Drawing.Color.White;
-            this.lblTime.Location = new System.Drawing.Point(886, 18);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(137, 40);
-            this.lblTime.TabIndex = 2;
-            this.lblTime.Text = "00:00:00";
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(37)))), ((int)(((byte)(47)))));
-            this.panel2.Controls.Add(this.lblgiorno);
-            this.panel2.Controls.Add(this.iconPictureBox1);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.lblTime);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.ForeColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(293, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1039, 100);
-            this.panel2.TabIndex = 0;
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(37)))), ((int)(((byte)(47)))));
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 44;
-            this.iconPictureBox1.Location = new System.Drawing.Point(41, 33);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(44, 44);
-            this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.iconPictureBox1.TabIndex = 1;
-            this.iconPictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(91, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Home";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -321,10 +321,10 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
